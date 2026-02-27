@@ -20,7 +20,7 @@ function DigitalWellnessScreen() {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    padding: '0 22px',
+                    padding: '0 20px',
                     height: '44px',
                     fontSize: '15px',
                     fontWeight: '590'
@@ -28,17 +28,17 @@ function DigitalWellnessScreen() {
             },
             React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '4px' } },
                 '5:24',
-                React.createElement('i', { className: 'ph-fill ph-battery-charging-vertical', style: { fontSize: '17px', color: '#000', marginLeft: '2px' } })
+                React.createElement('i', { className: 'ph-fill ph-battery-charging-vertical', style: { fontSize: '16px', color: '#000', marginLeft: '2px' } })
             ),
             React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '4px', fontSize: '15px' } },
-                React.createElement('i', { className: 'ph-fill ph-cell-signal-full', style: { fontSize: '15px' } }),
+                React.createElement('i', { className: 'ph-fill ph-cell-signal-full', style: { fontSize: '14px' } }),
                 '5G',
                 React.createElement('span', {
                     style: {
                         background: '#c7c7cc',
-                        borderRadius: '12px',
-                        padding: '2px 6px',
-                        fontSize: '13px',
+                        borderRadius: '11px',
+                        padding: '1px 5px',
+                        fontSize: '12px',
                         fontWeight: '600'
                     }
                 }, '4')
@@ -48,13 +48,13 @@ function DigitalWellnessScreen() {
         // Back Button
         React.createElement(
             'div',
-            { style: { padding: '10px 22px 8px 22px' } },
+            { style: { padding: '8px 20px 6px 20px' } },
             React.createElement(
                 'button',
                 {
                     style: {
-                        width: '32px',
-                        height: '32px',
+                        width: '30px',
+                        height: '30px',
                         borderRadius: '50%',
                         background: 'white',
                         border: 'none',
@@ -62,21 +62,21 @@ function DigitalWellnessScreen() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         cursor: 'pointer',
-                        boxShadow: '0 2px 6px rgba(0,0,0,0.08)'
+                        boxShadow: '0 2px 5px rgba(0,0,0,0.08)'
                     }
                 },
-                React.createElement('i', { className: 'ph-bold ph-caret-left', style: { fontSize: '14px', color: '#000' } })
+                React.createElement('i', { className: 'ph-bold ph-caret-left', style: { fontSize: '13px', color: '#000' } })
             )
         ),
 
         // All Devices
         React.createElement('div', {
             style: {
-                padding: '0 22px 10px 22px',
-                fontSize: '22px',
+                padding: '0 20px 8px 20px',
+                fontSize: '20px',
                 fontWeight: '700',
                 color: '#aeaeb2',
-                letterSpacing: '0.35px'
+                letterSpacing: '0.3px'
             }
         }, 'All Devices'),
 
@@ -85,10 +85,10 @@ function DigitalWellnessScreen() {
             'div',
             {
                 style: {
-                    margin: '0 16px 16px 16px',
+                    margin: '0 16px 14px 16px',
                     background: 'white',
-                    borderRadius: '12px',
-                    padding: '16px 14px 14px 14px'
+                    borderRadius: '11px',
+                    padding: '14px 12px 12px 12px'
                 }
             },
             // Daily Average label
@@ -96,7 +96,7 @@ function DigitalWellnessScreen() {
                 style: {
                     fontSize: '13px',
                     color: '#aeaeb2',
-                    marginBottom: '6px',
+                    marginBottom: '5px',
                     fontWeight: '400'
                 }
             }, 'Daily Average'),
@@ -104,13 +104,13 @@ function DigitalWellnessScreen() {
             // Time and percentage
             React.createElement(
                 'div',
-                { style: { display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' } },
+                { style: { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' } },
                 React.createElement('div', {
                     style: {
-                        fontSize: '32px',
+                        fontSize: '28px',
                         fontWeight: '600',
                         lineHeight: '1',
-                        letterSpacing: '0.2px'
+                        letterSpacing: '0.1px'
                     }
                 }, '24h 44m'),
                 React.createElement('div', {
@@ -119,12 +119,12 @@ function DigitalWellnessScreen() {
                         color: '#aeaeb2',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '3px',
+                        gap: '2px',
                         fontWeight: '400',
                         whiteSpace: 'nowrap'
                     }
                 },
-                    React.createElement('i', { className: 'ph ph-arrow-down', style: { fontSize: '13px' } }),
+                    React.createElement('i', { className: 'ph ph-arrow-down', style: { fontSize: '12px' } }),
                     '7% from last week'
                 )
             ),
@@ -134,9 +134,9 @@ function DigitalWellnessScreen() {
                 'div',
                 {
                     style: {
-                        height: '115px',
+                        height: '105px',
                         position: 'relative',
-                        marginBottom: '6px'
+                        marginBottom: '5px'
                     }
                 },
                 // Grid lines
@@ -145,7 +145,7 @@ function DigitalWellnessScreen() {
                         position: 'absolute',
                         top: '0',
                         left: '0',
-                        right: '38px',
+                        right: '35px',
                         height: '100%',
                         borderTop: '1px dotted #e5e5ea',
                         borderBottom: '1px dotted #e5e5ea'
@@ -156,16 +156,16 @@ function DigitalWellnessScreen() {
                         position: 'absolute',
                         top: '50%',
                         left: '0',
-                        right: '38px',
+                        right: '35px',
                         height: '0',
                         borderTop: '1px dotted #e5e5ea'
                     }
                 }),
 
                 // Y-axis labels
-                React.createElement('div', { style: { position: 'absolute', right: '0', top: '-5px', fontSize: '11px', color: '#00cec9', fontWeight: '400' } }, 'avg'),
-                React.createElement('div', { style: { position: 'absolute', right: '0', top: '48%', transform: 'translateY(-50%)', fontSize: '11px', color: '#aeaeb2', fontWeight: '400' } }, '14h'),
-                React.createElement('div', { style: { position: 'absolute', right: '0', bottom: '17px', fontSize: '11px', color: '#aeaeb2', fontWeight: '400' } }, '0'),
+                React.createElement('div', { style: { position: 'absolute', right: '0', top: '-4px', fontSize: '10px', color: '#00cec9', fontWeight: '400' } }, 'avg'),
+                React.createElement('div', { style: { position: 'absolute', right: '0', top: '48%', transform: 'translateY(-50%)', fontSize: '10px', color: '#aeaeb2', fontWeight: '400' } }, '14h'),
+                React.createElement('div', { style: { position: 'absolute', right: '0', bottom: '15px', fontSize: '10px', color: '#aeaeb2', fontWeight: '400' } }, '0'),
 
                 // Bars container
                 React.createElement(
@@ -175,9 +175,9 @@ function DigitalWellnessScreen() {
                             height: '100%',
                             display: 'flex',
                             alignItems: 'flex-end',
-                            gap: '12px',
-                            paddingRight: '38px',
-                            paddingBottom: '17px'
+                            gap: '10px',
+                            paddingRight: '35px',
+                            paddingBottom: '15px'
                         }
                     },
                     ['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, i) =>
@@ -190,18 +190,18 @@ function DigitalWellnessScreen() {
                                     display: 'flex',
                                     flexDirection: 'column',
                                     alignItems: 'center',
-                                    gap: '5px'
+                                    gap: '4px'
                                 }
                             },
                             React.createElement('div', {
                                 style: {
                                     width: '100%',
-                                    height: i < 4 ? (i === 3 ? '42px' : '68px') : '0px',
+                                    height: i < 4 ? (i === 3 ? '38px' : '62px') : '0px',
                                     background: '#00cec9',
                                     borderRadius: '3px'
                                 }
                             }),
-                            React.createElement('div', { style: { fontSize: '11px', color: '#aeaeb2', fontWeight: '400' } }, day)
+                            React.createElement('div', { style: { fontSize: '10px', color: '#aeaeb2', fontWeight: '400' } }, day)
                         )
                     )
                 )
@@ -215,19 +215,19 @@ function DigitalWellnessScreen() {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        padding: '13px 0 0 0',
+                        padding: '11px 0 0 0',
                         borderTop: '0.5px solid #e5e5ea'
                     }
                 },
-                React.createElement('div', { style: { fontSize: '17px', color: '#000', fontWeight: '400' } }, 'See All App & Website Activity'),
-                React.createElement('i', { className: 'ph ph-caret-right', style: { fontSize: '15px', color: '#c7c7cc' } })
+                React.createElement('div', { style: { fontSize: '16px', color: '#000', fontWeight: '400' } }, 'See All App & Website Activity'),
+                React.createElement('i', { className: 'ph ph-caret-right', style: { fontSize: '14px', color: '#c7c7cc' } })
             ),
 
             React.createElement('div', {
                 style: {
-                    fontSize: '13px',
+                    fontSize: '12px',
                     color: '#aeaeb2',
-                    marginTop: '8px',
+                    marginTop: '7px',
                     fontWeight: '400'
                 }
             }, 'Updated today at 5:24 PM')
@@ -236,7 +236,7 @@ function DigitalWellnessScreen() {
         // Limit Usage
         React.createElement('div', {
             style: {
-                padding: '0 22px 8px 22px',
+                padding: '0 20px 7px 20px',
                 fontSize: '13px',
                 fontWeight: '400',
                 color: '#6e6e73',
@@ -249,9 +249,9 @@ function DigitalWellnessScreen() {
             'div',
             {
                 style: {
-                    margin: '0 16px 16px 16px',
+                    margin: '0 16px 14px 16px',
                     background: 'white',
-                    borderRadius: '12px',
+                    borderRadius: '11px',
                     overflow: 'hidden'
                 }
             },
@@ -268,31 +268,31 @@ function DigitalWellnessScreen() {
                         style: {
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '12px',
-                            padding: '8px 14px',
+                            gap: '10px',
+                            padding: '7px 12px',
                             borderBottom: index < arr.length - 1 ? '0.5px solid #e5e5ea' : 'none',
-                            minHeight: '60px'
+                            minHeight: '54px'
                         }
                     },
                     React.createElement('div', {
                         style: {
-                            width: '52px',
-                            height: '52px',
-                            borderRadius: '12px',
+                            width: '46px',
+                            height: '46px',
+                            borderRadius: '11px',
                             background: item.color,
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             flexShrink: 0
                         }
-                    }, React.createElement('i', { className: `ph-fill ${item.icon}`, style: { fontSize: '24px', color: 'white' } })),
+                    }, React.createElement('i', { className: `ph-fill ${item.icon}`, style: { fontSize: '21px', color: 'white' } })),
                     React.createElement(
                         'div',
                         { style: { flex: 1 } },
-                        React.createElement('div', { style: { fontSize: '17px', marginBottom: '1px', color: '#000', fontWeight: '400' } }, item.title),
-                        React.createElement('div', { style: { fontSize: '13px', color: '#aeaeb2', fontWeight: '400' } }, item.subtitle)
+                        React.createElement('div', { style: { fontSize: '16px', marginBottom: '1px', color: '#000', fontWeight: '400' } }, item.title),
+                        React.createElement('div', { style: { fontSize: '12px', color: '#aeaeb2', fontWeight: '400' } }, item.subtitle)
                     ),
-                    React.createElement('i', { className: 'ph ph-caret-right', style: { fontSize: '15px', color: '#c7c7cc' } })
+                    React.createElement('i', { className: 'ph ph-caret-right', style: { fontSize: '14px', color: '#c7c7cc' } })
                 )
             )
         ),
@@ -300,7 +300,7 @@ function DigitalWellnessScreen() {
         // Communication
         React.createElement('div', {
             style: {
-                padding: '0 22px 8px 22px',
+                padding: '0 20px 7px 20px',
                 fontSize: '13px',
                 fontWeight: '400',
                 color: '#6e6e73',
@@ -313,9 +313,9 @@ function DigitalWellnessScreen() {
             'div',
             {
                 style: {
-                    margin: '0 16px 16px 16px',
+                    margin: '0 16px 14px 16px',
                     background: 'white',
-                    borderRadius: '12px',
+                    borderRadius: '11px',
                     overflow: 'hidden'
                 }
             },
@@ -330,31 +330,31 @@ function DigitalWellnessScreen() {
                         style: {
                             display: 'flex',
                             alignItems: 'center',
-                            gap: '12px',
-                            padding: '8px 14px',
+                            gap: '10px',
+                            padding: '7px 12px',
                             borderBottom: index < arr.length - 1 ? '0.5px solid #e5e5ea' : 'none',
-                            minHeight: '60px'
+                            minHeight: '54px'
                         }
                     },
                     React.createElement('div', {
                         style: {
-                            width: '52px',
-                            height: '52px',
-                            borderRadius: '12px',
+                            width: '46px',
+                            height: '46px',
+                            borderRadius: '11px',
                             background: item.color,
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             flexShrink: 0
                         }
-                    }, React.createElement('i', { className: `ph-fill ${item.icon}`, style: { fontSize: '24px', color: 'white' } })),
+                    }, React.createElement('i', { className: `ph-fill ${item.icon}`, style: { fontSize: '21px', color: 'white' } })),
                     React.createElement(
                         'div',
                         { style: { flex: 1 } },
-                        React.createElement('div', { style: { fontSize: '17px', marginBottom: '1px', color: '#000', fontWeight: '400' } }, item.title),
-                        React.createElement('div', { style: { fontSize: '13px', color: '#aeaeb2', fontWeight: '400' } }, item.subtitle)
+                        React.createElement('div', { style: { fontSize: '16px', marginBottom: '1px', color: '#000', fontWeight: '400' } }, item.title),
+                        React.createElement('div', { style: { fontSize: '12px', color: '#aeaeb2', fontWeight: '400' } }, item.subtitle)
                     ),
-                    React.createElement('i', { className: 'ph ph-caret-right', style: { fontSize: '15px', color: '#c7c7cc' } })
+                    React.createElement('i', { className: 'ph ph-caret-right', style: { fontSize: '14px', color: '#c7c7cc' } })
                 )
             )
         ),
@@ -362,7 +362,7 @@ function DigitalWellnessScreen() {
         // Restrictions
         React.createElement('div', {
             style: {
-                padding: '0 22px 8px 22px',
+                padding: '0 20px 7px 20px',
                 fontSize: '13px',
                 fontWeight: '400',
                 color: '#6e6e73',
@@ -375,35 +375,35 @@ function DigitalWellnessScreen() {
             'div',
             {
                 style: {
-                    margin: '0 16px 16px 16px',
+                    margin: '0 16px 14px 16px',
                     background: 'white',
-                    borderRadius: '12px',
+                    borderRadius: '11px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '12px',
-                    padding: '8px 14px',
-                    minHeight: '60px'
+                    gap: '10px',
+                    padding: '7px 12px',
+                    minHeight: '54px'
                 }
             },
             React.createElement('div', {
                 style: {
-                    width: '52px',
-                    height: '52px',
-                    borderRadius: '12px',
+                    width: '46px',
+                    height: '46px',
+                    borderRadius: '11px',
                     background: '#ff453a',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexShrink: 0
                 }
-            }, React.createElement('i', { className: 'ph-fill ph-prohibit', style: { fontSize: '24px', color: 'white' } })),
+            }, React.createElement('i', { className: 'ph-fill ph-prohibit', style: { fontSize: '21px', color: 'white' } })),
             React.createElement(
                 'div',
                 { style: { flex: 1 } },
-                React.createElement('div', { style: { fontSize: '17px', marginBottom: '1px', color: '#000', fontWeight: '400' } }, 'Content & Privacy Restrictions'),
-                React.createElement('div', { style: { fontSize: '13px', color: '#aeaeb2', fontWeight: '400' } }, 'Manage content, apps and settings')
+                React.createElement('div', { style: { fontSize: '16px', marginBottom: '1px', color: '#000', fontWeight: '400' } }, 'Content & Privacy Restrictions'),
+                React.createElement('div', { style: { fontSize: '12px', color: '#aeaeb2', fontWeight: '400' } }, 'Manage content, apps and settings')
             ),
-            React.createElement('i', { className: 'ph ph-caret-right', style: { fontSize: '15px', color: '#c7c7cc' } })
+            React.createElement('i', { className: 'ph ph-caret-right', style: { fontSize: '14px', color: '#c7c7cc' } })
         ),
 
         // Lock Settings
@@ -411,14 +411,14 @@ function DigitalWellnessScreen() {
             'div',
             {
                 style: {
-                    margin: '0 16px 10px 16px',
+                    margin: '0 16px 9px 16px',
                     background: 'white',
-                    borderRadius: '12px',
-                    padding: '13px 14px'
+                    borderRadius: '11px',
+                    padding: '12px 12px'
                 }
             },
-            React.createElement('div', { style: { fontSize: '17px', color: '#007aff', marginBottom: '3px', fontWeight: '400' } }, 'Lock Screen Time Settings'),
-            React.createElement('div', { style: { fontSize: '13px', color: '#86868b', lineHeight: '1.3', fontWeight: '400' } }, 'Use a passcode to secure Screen Time settings.')
+            React.createElement('div', { style: { fontSize: '16px', color: '#007aff', marginBottom: '3px', fontWeight: '400' } }, 'Lock Screen Time Settings'),
+            React.createElement('div', { style: { fontSize: '12px', color: '#86868b', lineHeight: '1.3', fontWeight: '400' } }, 'Use a passcode to secure Screen Time settings.')
         ),
 
         // Share Across Devices
@@ -426,16 +426,16 @@ function DigitalWellnessScreen() {
             'div',
             {
                 style: {
-                    margin: '0 16px 10px 16px',
+                    margin: '0 16px 9px 16px',
                     background: 'white',
-                    borderRadius: '12px',
-                    padding: '13px 14px'
+                    borderRadius: '11px',
+                    padding: '12px 12px'
                 }
             },
             React.createElement(
                 'div',
                 { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3px' } },
-                React.createElement('div', { style: { fontSize: '17px', color: '#000', fontWeight: '400' } }, 'Share Across Devices'),
+                React.createElement('div', { style: { fontSize: '16px', color: '#000', fontWeight: '400' } }, 'Share Across Devices'),
                 React.createElement('div', {
                     style: {
                         width: '51px',
@@ -459,7 +459,7 @@ function DigitalWellnessScreen() {
                     })
                 )
             ),
-            React.createElement('div', { style: { fontSize: '13px', color: '#86868b', lineHeight: '1.3', fontWeight: '400' } }, 'You can enable this on any device signed in to iCloud to sync your Screen Time settings.')
+            React.createElement('div', { style: { fontSize: '12px', color: '#86868b', lineHeight: '1.3', fontWeight: '400' } }, 'You can enable this on any device signed in to iCloud to sync your Screen Time settings.')
         ),
 
         // Family
@@ -467,14 +467,14 @@ function DigitalWellnessScreen() {
             'div',
             {
                 style: {
-                    margin: '0 16px 10px 16px',
+                    margin: '0 16px 9px 16px',
                     background: 'white',
-                    borderRadius: '12px',
-                    padding: '13px 14px'
+                    borderRadius: '11px',
+                    padding: '12px 12px'
                 }
             },
-            React.createElement('div', { style: { fontSize: '17px', color: '#007aff', marginBottom: '3px', fontWeight: '400' } }, 'Set Up Screen Time for Family'),
-            React.createElement('div', { style: { fontSize: '13px', color: '#86868b', lineHeight: '1.3', fontWeight: '400' } }, 'Set up Family Sharing to use Screen Time with your family\'s devices.')
+            React.createElement('div', { style: { fontSize: '16px', color: '#007aff', marginBottom: '3px', fontWeight: '400' } }, 'Set Up Screen Time for Family'),
+            React.createElement('div', { style: { fontSize: '12px', color: '#86868b', lineHeight: '1.3', fontWeight: '400' } }, 'Set up Family Sharing to use Screen Time with your family\'s devices.')
         ),
 
         // Turn Off
@@ -484,12 +484,12 @@ function DigitalWellnessScreen() {
                 style: {
                     margin: '0 16px 40px 16px',
                     background: 'white',
-                    borderRadius: '12px',
-                    padding: '13px 14px'
+                    borderRadius: '11px',
+                    padding: '12px 12px'
                 }
             },
-            React.createElement('div', { style: { fontSize: '17px', color: '#ff3b30', marginBottom: '3px', fontWeight: '400' } }, 'Turn Off App & Website Activity'),
-            React.createElement('div', { style: { fontSize: '13px', color: '#86868b', lineHeight: '1.3', fontWeight: '400' } }, 'Turning off App & Website Activity disables real-time reporting, Downtime, App Limits and Always Allowed.')
+            React.createElement('div', { style: { fontSize: '16px', color: '#ff3b30', marginBottom: '3px', fontWeight: '400' } }, 'Turn Off App & Website Activity'),
+            React.createElement('div', { style: { fontSize: '12px', color: '#86868b', lineHeight: '1.3', fontWeight: '400' } }, 'Turning off App & Website Activity disables real-time reporting, Downtime, App Limits and Always Allowed.')
         )
     );
 }
