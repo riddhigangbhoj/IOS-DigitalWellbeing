@@ -1,33 +1,18 @@
 function App() {
-    const app = window.useApp();
-
     return (
         <div className="app-container">
-            <TextBox
-                position="left"
-                title="Instructions"
-                content={app.leftNotes}
-            />
-
             <iPhone>
-                <ScreenManager />
+                <div style={{
+                    width: '100%',
+                    height: '100%',
+                    background: 'white',
+                    borderRadius: '40px'
+                }}></div>
             </iPhone>
-
-            <TextBox
-                position="right"
-                title="Notes"
-                content={app.rightNotes}
-            />
         </div>
     );
 }
 
 // Initialize React app
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    React.createElement(
-        window.AppProvider,
-        null,
-        React.createElement(App)
-    )
-);
+root.render(React.createElement(App));
