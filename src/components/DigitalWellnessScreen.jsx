@@ -1,4 +1,4 @@
-function DigitalWellnessScreen() {
+function DigitalWellnessScreen({ onNavigate }) {
     return React.createElement(
         'div',
         {
@@ -211,12 +211,14 @@ function DigitalWellnessScreen() {
             React.createElement(
                 'div',
                 {
+                    onClick: () => onNavigate('activity'),
                     style: {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         padding: '11px 0 0 0',
-                        borderTop: '0.5px solid #e5e5ea'
+                        borderTop: '0.5px solid #e5e5ea',
+                        cursor: 'pointer'
                     }
                 },
                 React.createElement('div', { style: { fontSize: '16px', color: '#000', fontWeight: '400' } }, 'See All App & Website Activity'),
