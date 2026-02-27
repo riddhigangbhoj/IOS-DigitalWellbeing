@@ -5,14 +5,7 @@ function App() {
         React.createElement(
             window.iPhone,
             null,
-            React.createElement('div', {
-                style: {
-                    width: '100%',
-                    height: '100%',
-                    background: 'white',
-                    borderRadius: '40px'
-                }
-            })
+            React.createElement(window.DigitalWellnessScreen)
         )
     );
 }
