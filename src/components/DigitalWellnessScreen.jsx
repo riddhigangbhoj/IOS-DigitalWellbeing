@@ -7,7 +7,8 @@ function DigitalWellnessScreen() {
                 height: '100%',
                 background: '#f2f2f7',
                 overflowY: 'auto',
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+                WebkitFontSmoothing: 'antialiased'
             }
         },
         // Status Bar
@@ -18,74 +19,53 @@ function DigitalWellnessScreen() {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    padding: '12px 20px 8px 20px',
+                    padding: '8px 24px 0 24px',
+                    height: '44px',
                     fontSize: '15px',
-                    fontWeight: '600',
-                    background: '#f2f2f7'
+                    fontWeight: '600'
                 }
             },
-            React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '6px' } },
-                React.createElement('span', null, '5:24'),
-                React.createElement('div', {
-                    style: {
-                        width: '14px',
-                        height: '14px',
-                        background: '#000',
-                        borderRadius: '3px',
-                        fontSize: '10px',
-                        color: 'white',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }
-                }, '🔋')
+            React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '4px' } },
+                '5:24 🔋'
             ),
-            React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px' } },
-                React.createElement('span', null, '📶'),
-                React.createElement('span', null, '5G'),
-                React.createElement('span', {
-                    style: {
-                        background: '#e5e5ea',
-                        borderRadius: '12px',
-                        padding: '2px 8px',
-                        fontSize: '12px'
-                    }
-                }, '4')
+            React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '4px', fontSize: '15px' } },
+                '📶 5G 4'
             )
         ),
 
         // Back Button
         React.createElement(
             'div',
-            { style: { padding: '16px 20px' } },
+            { style: { padding: '8px 24px' } },
             React.createElement(
                 'button',
                 {
                     style: {
-                        width: '40px',
-                        height: '40px',
+                        width: '36px',
+                        height: '36px',
                         borderRadius: '50%',
                         background: 'white',
                         border: 'none',
-                        fontSize: '20px',
+                        fontSize: '18px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         cursor: 'pointer',
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.12)'
                     }
                 },
                 '←'
             )
         ),
 
-        // All Devices Header
+        // All Devices
         React.createElement('div', {
             style: {
-                padding: '0 20px 16px 20px',
-                fontSize: '28px',
+                padding: '8px 24px',
+                fontSize: '22px',
                 fontWeight: '700',
-                color: '#8e8e93'
+                color: '#8e8e93',
+                letterSpacing: '-0.5px'
             }
         }, 'All Devices'),
 
@@ -94,63 +74,88 @@ function DigitalWellnessScreen() {
             'div',
             {
                 style: {
-                    margin: '0 16px 16px 16px',
+                    margin: '12px 16px',
                     background: 'white',
-                    borderRadius: '12px',
-                    padding: '20px',
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+                    borderRadius: '14px',
+                    padding: '16px',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.08)'
                 }
             },
-            React.createElement('div', { style: { fontSize: '15px', color: '#8e8e93', marginBottom: '8px' } }, 'Daily Average'),
+            // Daily Average label
+            React.createElement('div', {
+                style: {
+                    fontSize: '13px',
+                    color: '#8e8e93',
+                    marginBottom: '4px',
+                    fontWeight: '400'
+                }
+            }, 'Daily Average'),
+
+            // Time and percentage
             React.createElement(
                 'div',
-                { style: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' } },
-                React.createElement('div', { style: { fontSize: '40px', fontWeight: '600' } }, '24h 44m'),
+                { style: { display: 'flex', alignItems: 'flex-end', gap: '12px', marginBottom: '16px' } },
                 React.createElement('div', {
                     style: {
-                        fontSize: '15px',
-                        color: '#8e8e93',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '4px'
+                        fontSize: '34px',
+                        fontWeight: '700',
+                        lineHeight: '1',
+                        letterSpacing: '-0.5px'
                     }
-                },
-                    React.createElement('span', null, '↓'),
-                    '7% from last week'
-                )
+                }, '24h 44m'),
+                React.createElement('div', {
+                    style: {
+                        fontSize: '13px',
+                        color: '#8e8e93',
+                        paddingBottom: '4px'
+                    }
+                }, '↓ 7% from last week')
             ),
-            // Bar Chart
+
+            // Chart
             React.createElement(
                 'div',
-                { style: { height: '140px', display: 'flex', alignItems: 'flex-end', gap: '8px', marginBottom: '12px', position: 'relative' } },
-                React.createElement('div', { style: { position: 'absolute', right: '10px', top: '0', fontSize: '12px', color: '#8e8e93' } }, 'avg'),
-                React.createElement('div', { style: { position: 'absolute', right: '10px', top: '50%', fontSize: '12px', color: '#8e8e93' } }, '14h'),
-                React.createElement('div', { style: { position: 'absolute', right: '10px', bottom: '20px', fontSize: '12px', color: '#8e8e93' } }, '0'),
-                ['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, index) =>
+                {
+                    style: {
+                        height: '120px',
+                        display: 'flex',
+                        alignItems: 'flex-end',
+                        gap: '12px',
+                        marginBottom: '8px',
+                        position: 'relative',
+                        paddingRight: '40px'
+                    }
+                },
+                React.createElement('div', { style: { position: 'absolute', right: '0', top: '0', fontSize: '11px', color: '#8e8e93' } }, 'avg'),
+                React.createElement('div', { style: { position: 'absolute', right: '0', top: '50%', transform: 'translateY(-50%)', fontSize: '11px', color: '#8e8e93' } }, '14h'),
+                React.createElement('div', { style: { position: 'absolute', right: '0', bottom: '24px', fontSize: '11px', color: '#8e8e93' } }, '0'),
+                ['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, i) =>
                     React.createElement(
                         'div',
                         {
-                            key: day + index,
+                            key: i,
                             style: {
                                 flex: 1,
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'center',
-                                gap: '4px'
+                                gap: '6px'
                             }
                         },
                         React.createElement('div', {
                             style: {
                                 width: '100%',
-                                height: index < 4 ? '80px' : '0px',
-                                background: index < 4 ? '#00d4aa' : 'transparent',
+                                height: i < 4 ? '70px' : '0px',
+                                background: '#00d4aa',
                                 borderRadius: '4px'
                             }
                         }),
-                        React.createElement('div', { style: { fontSize: '12px', color: '#8e8e93' } }, day)
+                        React.createElement('div', { style: { fontSize: '11px', color: '#8e8e93' } }, day)
                     )
                 )
             ),
+
+            // See All button
             React.createElement(
                 'div',
                 {
@@ -158,36 +163,43 @@ function DigitalWellnessScreen() {
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        padding: '16px 0',
-                        borderTop: '1px solid #e5e5ea'
+                        padding: '12px 0 0 0',
+                        borderTop: '0.5px solid #e5e5ea',
+                        marginTop: '12px'
                     }
                 },
-                React.createElement('div', { style: { fontSize: '17px' } }, 'See All App & Website Activity'),
-                React.createElement('div', { style: { fontSize: '20px', color: '#8e8e93' } }, '›')
+                React.createElement('div', { style: { fontSize: '15px' } }, 'See All App & Website Activity'),
+                React.createElement('div', { style: { fontSize: '17px', color: '#c7c7cc' } }, '›')
             ),
-            React.createElement('div', { style: { fontSize: '13px', color: '#8e8e93', marginTop: '8px' } }, 'Updated today at 5:24 PM')
+
+            React.createElement('div', {
+                style: {
+                    fontSize: '12px',
+                    color: '#8e8e93',
+                    marginTop: '8px'
+                }
+            }, 'Updated today at 5:24 PM')
         ),
 
-        // Limit Usage Section
+        // Limit Usage section
         React.createElement('div', {
             style: {
-                padding: '16px 20px 8px 20px',
+                padding: '16px 24px 8px 24px',
                 fontSize: '13px',
-                fontWeight: '600',
+                fontWeight: '400',
                 color: '#8e8e93',
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px'
             }
         }, 'Limit Usage'),
 
-        // Limit Usage Items
         React.createElement(
             'div',
             {
                 style: {
-                    margin: '0 16px 16px 16px',
+                    margin: '0 16px',
                     background: 'white',
-                    borderRadius: '12px',
+                    borderRadius: '14px',
                     overflow: 'hidden'
                 }
             },
@@ -200,45 +212,46 @@ function DigitalWellnessScreen() {
                 React.createElement(
                     'div',
                     {
-                        key: item.title,
+                        key: index,
                         style: {
                             display: 'flex',
                             alignItems: 'center',
                             gap: '12px',
-                            padding: '12px 16px',
-                            borderBottom: index < arr.length - 1 ? '1px solid #e5e5ea' : 'none'
+                            padding: '8px 16px',
+                            borderBottom: index < arr.length - 1 ? '0.5px solid #e5e5ea' : 'none',
+                            minHeight: '60px'
                         }
                     },
                     React.createElement('div', {
                         style: {
-                            width: '60px',
-                            height: '60px',
-                            borderRadius: '14px',
+                            width: '56px',
+                            height: '56px',
+                            borderRadius: '12px',
                             background: item.color,
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            fontSize: '28px',
+                            fontSize: '26px',
                             flexShrink: 0
                         }
                     }, item.icon),
                     React.createElement(
                         'div',
                         { style: { flex: 1 } },
-                        React.createElement('div', { style: { fontSize: '17px', marginBottom: '2px' } }, item.title),
-                        React.createElement('div', { style: { fontSize: '15px', color: '#8e8e93' } }, item.subtitle)
+                        React.createElement('div', { style: { fontSize: '15px', marginBottom: '2px' } }, item.title),
+                        React.createElement('div', { style: { fontSize: '13px', color: '#8e8e93' } }, item.subtitle)
                     ),
-                    React.createElement('div', { style: { fontSize: '20px', color: '#c7c7cc' } }, '›')
+                    React.createElement('div', { style: { fontSize: '17px', color: '#c7c7cc' } }, '›')
                 )
             )
         ),
 
-        // Communication Section
+        // Communication section
         React.createElement('div', {
             style: {
-                padding: '16px 20px 8px 20px',
+                padding: '24px 24px 8px 24px',
                 fontSize: '13px',
-                fontWeight: '600',
+                fontWeight: '400',
                 color: '#8e8e93',
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px'
@@ -249,9 +262,9 @@ function DigitalWellnessScreen() {
             'div',
             {
                 style: {
-                    margin: '0 16px 16px 16px',
+                    margin: '0 16px',
                     background: 'white',
-                    borderRadius: '12px',
+                    borderRadius: '14px',
                     overflow: 'hidden'
                 }
             },
@@ -262,45 +275,46 @@ function DigitalWellnessScreen() {
                 React.createElement(
                     'div',
                     {
-                        key: item.title,
+                        key: index,
                         style: {
                             display: 'flex',
                             alignItems: 'center',
                             gap: '12px',
-                            padding: '12px 16px',
-                            borderBottom: index < arr.length - 1 ? '1px solid #e5e5ea' : 'none'
+                            padding: '8px 16px',
+                            borderBottom: index < arr.length - 1 ? '0.5px solid #e5e5ea' : 'none',
+                            minHeight: '60px'
                         }
                     },
                     React.createElement('div', {
                         style: {
-                            width: '60px',
-                            height: '60px',
-                            borderRadius: '14px',
+                            width: '56px',
+                            height: '56px',
+                            borderRadius: '12px',
                             background: item.color,
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            fontSize: '28px',
+                            fontSize: '26px',
                             flexShrink: 0
                         }
                     }, item.icon),
                     React.createElement(
                         'div',
                         { style: { flex: 1 } },
-                        React.createElement('div', { style: { fontSize: '17px', marginBottom: '2px' } }, item.title),
-                        React.createElement('div', { style: { fontSize: '15px', color: '#8e8e93' } }, item.subtitle)
+                        React.createElement('div', { style: { fontSize: '15px', marginBottom: '2px' } }, item.title),
+                        React.createElement('div', { style: { fontSize: '13px', color: '#8e8e93' } }, item.subtitle)
                     ),
-                    React.createElement('div', { style: { fontSize: '20px', color: '#c7c7cc' } }, '›')
+                    React.createElement('div', { style: { fontSize: '17px', color: '#c7c7cc' } }, '›')
                 )
             )
         ),
 
-        // Restrictions Section
+        // Restrictions
         React.createElement('div', {
             style: {
-                padding: '16px 20px 8px 20px',
+                padding: '24px 24px 8px 24px',
                 fontSize: '13px',
-                fontWeight: '600',
+                fontWeight: '400',
                 color: '#8e8e93',
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px'
@@ -313,64 +327,65 @@ function DigitalWellnessScreen() {
                 style: {
                     margin: '0 16px 16px 16px',
                     background: 'white',
-                    borderRadius: '12px',
+                    borderRadius: '14px',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '12px',
-                    padding: '12px 16px'
+                    padding: '8px 16px',
+                    minHeight: '60px'
                 }
             },
             React.createElement('div', {
                 style: {
-                    width: '60px',
-                    height: '60px',
-                    borderRadius: '14px',
+                    width: '56px',
+                    height: '56px',
+                    borderRadius: '12px',
                     background: '#ff3b30',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '28px',
+                    fontSize: '26px',
                     flexShrink: 0
                 }
             }, '🚫'),
             React.createElement(
                 'div',
                 { style: { flex: 1 } },
-                React.createElement('div', { style: { fontSize: '17px', marginBottom: '2px' } }, 'Content & Privacy Restrictions'),
-                React.createElement('div', { style: { fontSize: '15px', color: '#8e8e93' } }, 'Manage content, apps and settings')
+                React.createElement('div', { style: { fontSize: '15px', marginBottom: '2px' } }, 'Content & Privacy Restrictions'),
+                React.createElement('div', { style: { fontSize: '13px', color: '#8e8e93' } }, 'Manage content, apps and settings')
             ),
-            React.createElement('div', { style: { fontSize: '20px', color: '#c7c7cc' } }, '›')
+            React.createElement('div', { style: { fontSize: '17px', color: '#c7c7cc' } }, '›')
         ),
 
-        // Bottom Options
+        // Bottom options
         React.createElement(
             'div',
             {
                 style: {
-                    margin: '0 16px 16px 16px',
+                    margin: '0 16px 12px 16px',
                     background: 'white',
-                    borderRadius: '12px',
-                    padding: '16px'
+                    borderRadius: '14px',
+                    padding: '14px 16px'
                 }
             },
-            React.createElement('div', { style: { fontSize: '17px', color: '#007aff', marginBottom: '8px' } }, 'Lock Screen Time Settings'),
-            React.createElement('div', { style: { fontSize: '13px', color: '#8e8e93' } }, 'Use a passcode to secure Screen Time settings.')
+            React.createElement('div', { style: { fontSize: '15px', color: '#007aff', marginBottom: '4px' } }, 'Lock Screen Time Settings'),
+            React.createElement('div', { style: { fontSize: '12px', color: '#8e8e93', lineHeight: '1.4' } }, 'Use a passcode to secure Screen Time settings.')
         ),
 
         React.createElement(
             'div',
             {
                 style: {
-                    margin: '0 16px 16px 16px',
+                    margin: '0 16px 12px 16px',
                     background: 'white',
-                    borderRadius: '12px',
-                    padding: '16px'
+                    borderRadius: '14px',
+                    padding: '14px 16px'
                 }
             },
             React.createElement(
                 'div',
-                { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' } },
-                React.createElement('div', { style: { fontSize: '17px' } }, 'Share Across Devices'),
+                { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' } },
+                React.createElement('div', { style: { fontSize: '15px' } }, 'Share Across Devices'),
                 React.createElement('div', {
                     style: {
                         width: '51px',
@@ -389,26 +404,26 @@ function DigitalWellnessScreen() {
                             position: 'absolute',
                             top: '2px',
                             right: '2px',
-                            boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.15)'
                         }
                     })
                 )
             ),
-            React.createElement('div', { style: { fontSize: '13px', color: '#8e8e93' } }, 'You can enable this on any device signed in to iCloud to sync your Screen Time settings.')
+            React.createElement('div', { style: { fontSize: '12px', color: '#8e8e93', lineHeight: '1.4' } }, 'You can enable this on any device signed in to iCloud to sync your Screen Time settings.')
         ),
 
         React.createElement(
             'div',
             {
                 style: {
-                    margin: '0 16px 16px 16px',
+                    margin: '0 16px 12px 16px',
                     background: 'white',
-                    borderRadius: '12px',
-                    padding: '16px'
+                    borderRadius: '14px',
+                    padding: '14px 16px'
                 }
             },
-            React.createElement('div', { style: { fontSize: '17px', color: '#007aff', marginBottom: '8px' } }, 'Set Up Screen Time for Family'),
-            React.createElement('div', { style: { fontSize: '13px', color: '#8e8e93' } }, 'Set up Family Sharing to use Screen Time with your family\'s devices.')
+            React.createElement('div', { style: { fontSize: '15px', color: '#007aff', marginBottom: '4px' } }, 'Set Up Screen Time for Family'),
+            React.createElement('div', { style: { fontSize: '12px', color: '#8e8e93', lineHeight: '1.4' } }, 'Set up Family Sharing to use Screen Time with your family\'s devices.')
         ),
 
         React.createElement(
@@ -417,12 +432,12 @@ function DigitalWellnessScreen() {
                 style: {
                     margin: '0 16px 32px 16px',
                     background: 'white',
-                    borderRadius: '12px',
-                    padding: '16px'
+                    borderRadius: '14px',
+                    padding: '14px 16px'
                 }
             },
-            React.createElement('div', { style: { fontSize: '17px', color: '#ff3b30', marginBottom: '8px' } }, 'Turn Off App & Website Activity'),
-            React.createElement('div', { style: { fontSize: '13px', color: '#8e8e93' } }, 'Turning off App & Website Activity disables real-time reporting, Downtime, App Limits and Always Allowed.')
+            React.createElement('div', { style: { fontSize: '15px', color: '#ff3b30', marginBottom: '4px' } }, 'Turn Off App & Website Activity'),
+            React.createElement('div', { style: { fontSize: '12px', color: '#8e8e93', lineHeight: '1.4' } }, 'Turning off App & Website Activity disables real-time reporting, Downtime, App Limits and Always Allowed.')
         )
     );
 }
