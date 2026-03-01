@@ -7,7 +7,9 @@ function App() {
     };
 
     const handleSolutionChange = (solution) => {
+        console.log('Switching to:', solution, 'from screen:', currentScreen);
         setActiveSolution(solution);
+        setCurrentScreen('home');
         // Scroll to top when switching solutions
         setTimeout(() => {
             const scrollableElements = document.querySelectorAll('[style*="overflow"]');

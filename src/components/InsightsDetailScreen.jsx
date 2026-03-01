@@ -243,10 +243,9 @@ function InsightsDetailScreen({ onNavigate }) {
                             lineHeight: '1.6',
                             fontWeight: '400',
                             marginBottom: '12px',
-                            padding: '10px 12px',
-                            borderRadius: '8px',
-                            border: '1px solid #ffd700',
-                            background: '#fffbf0',
+                            paddingLeft: '12px',
+                            borderLeft: '3px solid #d4a017',
+                            borderRadius: '4px',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '6px'
@@ -254,7 +253,7 @@ function InsightsDetailScreen({ onNavigate }) {
                     },
                         React.createElement('div', {
                             style: {
-                                fontWeight: '400',
+                                fontWeight: '500',
                                 color: '#1a1a1a',
                                 display: 'flex',
                                 alignItems: 'center',
@@ -333,10 +332,9 @@ function InsightsDetailScreen({ onNavigate }) {
                             lineHeight: '1.6',
                             fontWeight: '400',
                             marginBottom: '12px',
-                            padding: '10px 12px',
-                            borderRadius: '8px',
-                            border: '1px solid #c8e6c9',
-                            background: '#f1f8f4',
+                            paddingLeft: '12px',
+                            borderLeft: '3px solid #34c759',
+                            borderRadius: '4px',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '6px'
@@ -344,7 +342,7 @@ function InsightsDetailScreen({ onNavigate }) {
                     },
                         React.createElement('div', {
                             style: {
-                                fontWeight: '400',
+                                fontWeight: '500',
                                 color: '#1a1a1a',
                                 display: 'flex',
                                 alignItems: 'center',
@@ -403,10 +401,9 @@ function InsightsDetailScreen({ onNavigate }) {
                         color: '#1a1a1a',
                         lineHeight: '1.6',
                         fontWeight: '400',
-                        padding: '10px 12px',
-                        borderRadius: '8px',
-                        border: '1px solid #ffd700',
-                        background: '#fffbf0',
+                        paddingLeft: '12px',
+                        borderLeft: '3px solid #d4a017',
+                            borderRadius: '4px',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '6px'
@@ -414,7 +411,7 @@ function InsightsDetailScreen({ onNavigate }) {
                 },
                     React.createElement('div', {
                         style: {
-                            fontWeight: '400',
+                            fontWeight: '500',
                             color: '#1a1a1a',
                             display: 'flex',
                             justifyContent: 'space-between',
@@ -497,10 +494,9 @@ function InsightsDetailScreen({ onNavigate }) {
                         color: '#1a1a1a',
                         lineHeight: '1.6',
                         fontWeight: '400',
-                        padding: '10px 12px',
-                        borderRadius: '8px',
-                        border: '1px solid #c8e6c9',
-                        background: '#f1f8f4',
+                        paddingLeft: '12px',
+                        borderLeft: '3px solid #34c759',
+                            borderRadius: '4px',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '6px'
@@ -508,7 +504,7 @@ function InsightsDetailScreen({ onNavigate }) {
                 },
                     React.createElement('div', {
                         style: {
-                            fontWeight: '400',
+                            fontWeight: '500',
                             color: '#1a1a1a',
                             display: 'flex',
                             justifyContent: 'space-between',
@@ -562,10 +558,9 @@ function InsightsDetailScreen({ onNavigate }) {
                         color: '#1a1a1a',
                         lineHeight: '1.6',
                         fontWeight: '400',
-                        padding: '10px 12px',
-                        borderRadius: '8px',
-                        border: '1px solid #d5dae0',
-                        background: '#f5f7f9',
+                        paddingLeft: '12px',
+                        borderLeft: '3px solid #8e8e93',
+                        borderRadius: '4px',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '6px'
@@ -573,7 +568,7 @@ function InsightsDetailScreen({ onNavigate }) {
                 },
                     React.createElement('div', {
                         style: {
-                            fontWeight: '400',
+                            fontWeight: '500',
                             color: '#1a1a1a'
                         }
                     }, 'Post-meeting phone pickups'),
@@ -630,10 +625,9 @@ function InsightsDetailScreen({ onNavigate }) {
                         color: '#1a1a1a',
                         lineHeight: '1.6',
                         fontWeight: '400',
-                        padding: '10px 12px',
-                        borderRadius: '8px',
-                        border: '1px solid #ffd700',
-                        background: '#fffbf0',
+                        paddingLeft: '12px',
+                        borderLeft: '3px solid #d4a017',
+                            borderRadius: '4px',
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '6px'
@@ -718,7 +712,8 @@ function InsightsDetailScreen({ onNavigate }) {
                         padding: '8px 10px',
                         background: '#f9f9f9',
                         borderRadius: '6px',
-                        borderLeft: '2px solid #d4a017'
+                        borderLeft: '3px solid #d4a017',
+                        borderRadius: '4px'
                     }
                 }, 'After intense focus, your brain craves passive content as a reward'),
                 // Day entries
@@ -845,15 +840,13 @@ function InsightsDetailScreen({ onNavigate }) {
                         color: '#1a1a1a',
                         lineHeight: '1.6',
                         fontWeight: '400',
-                        padding: '8px 10px',
-                        borderRadius: '8px',
-                        border: '1px solid #c8e6c9',
-                        background: '#f1f8f4'
+                        paddingLeft: '12px',
+                        borderLeft: '3px solid #34c759'
                     }
                 },
                     React.createElement('div', {
                         style: {
-                            fontWeight: '400',
+                            fontWeight: '500',
                             marginBottom: '4px',
                             color: '#1a1a1a',
                             display: 'flex',

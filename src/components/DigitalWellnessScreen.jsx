@@ -447,18 +447,19 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                                     marginBottom: '10px',
                                     padding: '10px 12px',
                                     borderRadius: '8px',
-                                    border: '1px solid #ffd700',
-                                    background: '#fffbf0',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     gap: '5px',
                                     overflow: 'hidden',
-                                    wordWrap: 'break-word'
+                                    wordWrap: 'break-word',
+                                    paddingLeft: '12px',
+                                    borderLeft: '3px solid #d4a017',
+                                    borderRadius: '4px'
                                 }
                             },
                                 React.createElement('div', {
                                     style: {
-                                        fontWeight: '400',
+                                        fontWeight: '500',
                                         color: '#1a1a1a',
                                         fontSize: '13px',
                                         display: 'flex',
@@ -543,20 +544,19 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                                     lineHeight: '1.5',
                                     fontWeight: '400',
                                     marginBottom: '10px',
-                                    padding: '10px 12px',
-                                    borderRadius: '8px',
-                                    border: '1px solid #c8e6c9',
-                                    background: '#f1f8f4',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     gap: '5px',
                                     overflow: 'hidden',
-                                    wordWrap: 'break-word'
+                                    wordWrap: 'break-word',
+                                    paddingLeft: '12px',
+                                    borderLeft: '3px solid #34c759',
+                                    borderRadius: '4px'
                                 }
                             },
                                 React.createElement('div', {
                                     style: {
-                                        fontWeight: '400',
+                                        fontWeight: '500',
                                         color: '#1a1a1a',
                                         fontSize: '13px',
                                         display: 'flex',
