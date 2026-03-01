@@ -323,6 +323,7 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                     style: {
                         overflow: 'hidden',
                         position: 'relative',
+                        width: '100%',
                         marginBottom: '12px',
                         cursor: isDragging ? 'grabbing' : 'grab',
                         userSelect: 'none'
@@ -338,8 +339,11 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                         // Slide 1
                         React.createElement('div', {
                             style: {
+                                width: '100%',
                                 minWidth: '100%',
-                                flexShrink: 0
+                                maxWidth: '100%',
+                                flexShrink: 0,
+                                overflow: 'hidden'
                             }
                         },
                             React.createElement('div', {
@@ -383,24 +387,27 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                             ),
                             React.createElement('div', {
                                 style: {
-                                    fontSize: '13px',
+                                    fontSize: '12px',
                                     color: '#1a1a1a',
-                                    lineHeight: '1.6',
+                                    lineHeight: '1.5',
                                     fontWeight: '400',
-                                    marginBottom: '12px',
+                                    marginBottom: '10px',
                                     padding: '10px 12px',
                                     borderRadius: '8px',
                                     border: '1px solid #ffd700',
                                     background: '#fffbf0',
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    gap: '6px'
+                                    gap: '5px',
+                                    overflow: 'hidden',
+                                    wordWrap: 'break-word'
                                 }
                             },
                                 React.createElement('div', {
                                     style: {
                                         fontWeight: '400',
                                         color: '#1a1a1a',
+                                        fontSize: '13px',
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: '6px'
@@ -415,14 +422,14 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                                 React.createElement('div', {
                                     style: { display: 'flex' }
                                 },
-                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Cause:'),
-                                    React.createElement('span', { style: { color: '#6e6e73' } }, '3h less sleep than usual')
+                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '55px', flexShrink: 0 } }, 'Cause:'),
+                                    React.createElement('span', { style: { color: '#6e6e73', flex: 1, minWidth: 0 } }, '3h less sleep than usual')
                                 ),
                                 React.createElement('div', {
                                     style: { display: 'flex' }
                                 },
-                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Freq:'),
-                                    React.createElement('span', { style: { color: '#6e6e73' } }, 'Repeated 6 times in 2 months')
+                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '55px', flexShrink: 0 } }, 'Why:'),
+                                    React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic', flex: 1, minWidth: 0 } }, 'Low energy → phone as easy dopamine hit')
                                 )
                             ),
                             React.createElement(
@@ -459,8 +466,11 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                         // Slide 2 - What is different today
                         React.createElement('div', {
                             style: {
+                                width: '100%',
                                 minWidth: '100%',
-                                flexShrink: 0
+                                maxWidth: '100%',
+                                flexShrink: 0,
+                                overflow: 'hidden'
                             }
                         },
                             React.createElement('div', {
@@ -504,24 +514,27 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                             ),
                             React.createElement('div', {
                                 style: {
-                                    fontSize: '13px',
+                                    fontSize: '12px',
                                     color: '#1a1a1a',
-                                    lineHeight: '1.6',
+                                    lineHeight: '1.5',
                                     fontWeight: '400',
-                                    marginBottom: '12px',
+                                    marginBottom: '10px',
                                     padding: '10px 12px',
                                     borderRadius: '8px',
                                     border: '1px solid #ffd700',
                                     background: '#fffbf0',
                                     display: 'flex',
                                     flexDirection: 'column',
-                                    gap: '6px'
+                                    gap: '5px',
+                                    overflow: 'hidden',
+                                    wordWrap: 'break-word'
                                 }
                             },
                                 React.createElement('div', {
                                     style: {
                                         fontWeight: '400',
                                         color: '#1a1a1a',
+                                        fontSize: '13px',
                                         display: 'flex',
                                         alignItems: 'center',
                                         gap: '6px'
@@ -536,20 +549,14 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                                 React.createElement('div', {
                                     style: { display: 'flex' }
                                 },
-                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Effect:'),
-                                    React.createElement('span', { style: { color: '#6e6e73' } }, '25% less evening screen time')
+                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '55px', flexShrink: 0 } }, 'Effect:'),
+                                    React.createElement('span', { style: { color: '#6e6e73', flex: 1, minWidth: 0 } }, '25% less evening screen time')
                                 ),
                                 React.createElement('div', {
                                     style: { display: 'flex' }
                                 },
-                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Predict:'),
-                                    React.createElement('span', { style: { color: '#6e6e73' } }, 'No 9-11 PM spike tonight')
-                                ),
-                                React.createElement('div', {
-                                    style: { display: 'flex' }
-                                },
-                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Based on:'),
-                                    React.createElement('span', { style: { color: '#6e6e73' } }, '6 weeks of evening data')
+                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '55px', flexShrink: 0 } }, 'Why:'),
+                                    React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic', flex: 1, minWidth: 0 } }, 'Exercise kills the restlessness that triggers scrolling')
                                 )
                             ),
                             React.createElement(

@@ -225,6 +225,12 @@ function InsightsDetailScreen({ onNavigate }) {
                         },
                             React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Freq:'),
                             React.createElement('span', { style: { color: '#6e6e73' } }, 'Repeated 6 times in 2 months')
+                        ),
+                        React.createElement('div', {
+                            style: { display: 'flex' }
+                        },
+                            React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Why:'),
+                            React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Low energy → phone becomes the easy dopamine hit')
                         )
                     ),
                     React.createElement(
@@ -344,6 +350,12 @@ function InsightsDetailScreen({ onNavigate }) {
                         },
                             React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Based on:'),
                             React.createElement('span', { style: { color: '#6e6e73' } }, '6 weeks of evening data')
+                        ),
+                        React.createElement('div', {
+                            style: { display: 'flex' }
+                        },
+                            React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Why:'),
+                            React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Physical tiredness replaces the restlessness that drives scrolling')
                         )
                     ),
                     React.createElement(
@@ -463,6 +475,12 @@ function InsightsDetailScreen({ onNavigate }) {
                     },
                         React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Result:'),
                         React.createElement('span', { style: { color: '#6e6e73' } }, 'Highest-velocity window today')
+                    ),
+                    React.createElement('div', {
+                        style: { display: 'flex' }
+                    },
+                        React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Why:'),
+                        React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Mental fatigue after focus → brain seeks quick relief')
                     )
                 )
             ),
@@ -522,6 +540,12 @@ function InsightsDetailScreen({ onNavigate }) {
                     },
                         React.createElement('span', { style: { color: '#708238', minWidth: '70px', flexShrink: 0 } }, 'Result:'),
                         React.createElement('span', { style: { color: '#6e6e73' } }, '2h with zero pickups')
+                    ),
+                    React.createElement('div', {
+                        style: { display: 'flex' }
+                    },
+                        React.createElement('span', { style: { color: '#708238', minWidth: '70px', flexShrink: 0 } }, 'Felt like:'),
+                        React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Deep focus, no urge to check')
                     )
                 )
             ),
@@ -575,6 +599,12 @@ function InsightsDetailScreen({ onNavigate }) {
                     },
                         React.createElement('span', { style: { color: '#7c8a96', minWidth: '70px', flexShrink: 0 } }, 'Trend:'),
                         React.createElement('span', { style: { color: '#6e6e73' } }, 'Increasing since last week')
+                    ),
+                    React.createElement('div', {
+                        style: { display: 'flex' }
+                    },
+                        React.createElement('span', { style: { color: '#7c8a96', minWidth: '70px', flexShrink: 0 } }, 'Why:'),
+                        React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Meetings drain focus → phone fills the gap')
                     )
                 )
             )
@@ -648,6 +678,12 @@ function InsightsDetailScreen({ onNavigate }) {
                     },
                         React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Freq:'),
                         React.createElement('span', { style: { color: '#6e6e73' } }, '19 times across 6 days')
+                    ),
+                    React.createElement('div', {
+                        style: { display: 'flex' }
+                    },
+                        React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Why:'),
+                        React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Replying keeps you in phone mode, YouTube becomes the easy next step')
                     )
                 )
             ),
@@ -665,18 +701,37 @@ function InsightsDetailScreen({ onNavigate }) {
                         fontSize: '11px',
                         color: '#8e8e93',
                         fontWeight: '500',
-                        marginBottom: '10px',
+                        marginBottom: '4px',
                         letterSpacing: '0.5px'
                     }
-                }, 'PATTERN FORMED THIS WEEK: 9 - 11 PM'),
-                // Summary line
+                }, 'PATTERN FORMED THIS WEEK'),
+                React.createElement('div', {
+                    style: {
+                        fontSize: '15px',
+                        color: '#1a1a1a',
+                        fontWeight: '600',
+                        marginBottom: '6px'
+                    }
+                }, '9 - 11 PM'),
                 React.createElement('div', {
                     style: {
                         fontSize: '12px',
                         color: '#8e8e93',
-                        marginBottom: '10px'
+                        marginBottom: '14px'
                     }
                 }, '6 of 7 evenings followed this pattern'),
+                React.createElement('div', {
+                    style: {
+                        fontSize: '12px',
+                        color: '#6e6e73',
+                        fontStyle: 'italic',
+                        marginBottom: '14px',
+                        padding: '8px 10px',
+                        background: '#f9f9f9',
+                        borderRadius: '6px',
+                        borderLeft: '2px solid #d4a017'
+                    }
+                }, 'After intense focus, your brain craves passive content as a reward'),
                 // Day entries
                 React.createElement('div', {
                     style: {
@@ -836,6 +891,15 @@ function InsightsDetailScreen({ onNavigate }) {
                     },
                         React.createElement('span', { style: { color: '#708238', minWidth: '70px', flexShrink: 0 } }, 'Result:'),
                         React.createElement('span', { style: { color: '#6e6e73' } }, '-25% screen time')
+                    ),
+                    React.createElement('div', {
+                        style: {
+                            display: 'flex',
+                            marginBottom: '4px'
+                        }
+                    },
+                        React.createElement('span', { style: { color: '#708238', minWidth: '70px', flexShrink: 0 } }, 'Felt like:'),
+                        React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Calm mornings, started the day on your terms')
                     )
                 )
             )
