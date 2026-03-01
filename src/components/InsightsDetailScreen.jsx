@@ -6,7 +6,10 @@ function InsightsDetailScreen({ onNavigate }) {
         {
             style: {
                 background: '#f2f2f7',
-                minHeight: '100vh',
+                width: '100%',
+                height: '100%',
+                overflowY: 'auto',
+                overflowX: 'hidden',
                 fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
                 position: 'relative'
             }
@@ -137,6 +140,7 @@ function InsightsDetailScreen({ onNavigate }) {
             {
                 style: {
                     padding: '20px',
+                    paddingBottom: '60px',
                     marginTop: '54px'
                 }
             },
@@ -153,10 +157,10 @@ function InsightsDetailScreen({ onNavigate }) {
                     style: {
                         fontSize: '14px',
                         color: '#1a1a1a',
-                        fontWeight: '600',
+                        fontWeight: '400',
                         marginBottom: '14px'
                     }
-                }, 'What happened today'),
+                }, 'WHAT HAPPENED TODAY'),
                 React.createElement('div', {
                     style: {
                         fontSize: '13px',
@@ -245,10 +249,10 @@ function InsightsDetailScreen({ onNavigate }) {
                     style: {
                         fontSize: '14px',
                         color: '#1a1a1a',
-                        fontWeight: '600',
+                        fontWeight: '400',
                         marginBottom: '14px'
                     }
-                }, 'What is different today'),
+                }, 'WHAT IS DIFFERENT TODAY'),
                 React.createElement('div', {
                     style: {
                         fontSize: '13px',
@@ -337,10 +341,10 @@ function InsightsDetailScreen({ onNavigate }) {
                     style: {
                         fontSize: '14px',
                         color: '#1a1a1a',
-                        fontWeight: '600',
+                        fontWeight: '400',
                         marginBottom: '14px'
                     }
-                }, 'Key Moments'),
+                }, 'KEY MOMENTS'),
                 React.createElement('div', {
                     style: {
                         fontSize: '13px',
@@ -358,22 +362,15 @@ function InsightsDetailScreen({ onNavigate }) {
                             fontWeight: '600',
                             marginBottom: '8px'
                         }
-                    }, '1:10 PM — Post-meeting burst'),
+                    }, 'Post-meeting burst - 1:10 PM'),
                     React.createElement('div', {
                         style: {
-                            marginBottom: '4px'
+                            marginBottom: '4px',
+                            display: 'flex'
                         }
                     },
-                        React.createElement('span', { style: { fontStyle: 'italic' } }, 'Volume:'),
-                        ' 6 pickups in 15 minutes'
-                    ),
-                    React.createElement('div', {
-                        style: {
-                            marginBottom: '4px'
-                        }
-                    },
-                        React.createElement('span', { style: { fontStyle: 'italic' } }, 'Duration:'),
-                        ' None over 25 seconds'
+                        React.createElement('span', { style: { color: '#007aff', minWidth: '70px', flexShrink: 0 } }, 'Volume:'),
+                        React.createElement('span', null, '6 pickups in 15 minutes')
                     ),
                     React.createElement('div', {
                         style: {
@@ -381,8 +378,17 @@ function InsightsDetailScreen({ onNavigate }) {
                             display: 'flex'
                         }
                     },
-                        React.createElement('span', { style: { fontStyle: 'italic', flexShrink: 0 } }, 'Pattern:'),
-                        React.createElement('span', { style: { marginLeft: '4px' } },
+                        React.createElement('span', { style: { color: '#007aff', minWidth: '70px', flexShrink: 0 } }, 'Duration:'),
+                        React.createElement('span', null, 'All under 25 seconds')
+                    ),
+                    React.createElement('div', {
+                        style: {
+                            marginBottom: '4px',
+                            display: 'flex'
+                        }
+                    },
+                        React.createElement('span', { style: { color: '#007aff', minWidth: '70px', flexShrink: 0 } }, 'Pattern:'),
+                        React.createElement('span', null,
                             'Instagram → lock screen → Reddit → Twitter → back to Instagram'
                         )
                     )
@@ -410,10 +416,37 @@ function InsightsDetailScreen({ onNavigate }) {
                     style: {
                         fontSize: '14px',
                         color: '#1a1a1a',
-                        fontWeight: '600',
+                        fontWeight: '400',
                         marginBottom: '14px'
                     }
-                }, 'What worked today')
+                }, 'WHAT WORKED TODAY'),
+                React.createElement('div', {
+                    style: {
+                        fontSize: '13px',
+                        color: '#1a1a1a',
+                        lineHeight: '1.6',
+                        fontWeight: '400',
+                        padding: '8px 10px',
+                        borderRadius: '8px',
+                        border: '1px solid #c8e6c9',
+                        background: '#f1f8f4'
+                    }
+                },
+                    React.createElement('div', {
+                        style: {
+                            fontWeight: '600',
+                            marginBottom: '4px'
+                        }
+                    }, 'Biggest phone-free stretch: 11 AM – 1 PM'),
+                    React.createElement('div', {
+                        style: {
+                            display: 'flex'
+                        }
+                    },
+                        React.createElement('span', { style: { color: '#34c759', minWidth: '70px', flexShrink: 0 } }, 'Situation:'),
+                        React.createElement('span', null, 'Meetings + focus mode')
+                    )
+                )
             ),
             // Patterns forming section
             React.createElement('div', {
@@ -428,10 +461,10 @@ function InsightsDetailScreen({ onNavigate }) {
                     style: {
                         fontSize: '14px',
                         color: '#1a1a1a',
-                        fontWeight: '600',
+                        fontWeight: '400',
                         marginBottom: '14px'
                     }
-                }, 'Patterns forming')
+                }, 'PATTERNS FORMING')
             )
         )
     );
