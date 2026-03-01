@@ -353,7 +353,7 @@ function InsightsDetailScreen({ onNavigate }) {
                                 className: 'ph-fill ph-trend-down',
                                 style: { fontSize: '14px', color: '#34c759' }
                             }),
-                            '25% less screen time'
+                            '25% less screen time in the evening'
                         ),
                         React.createElement('div', {
                             style: { display: 'flex' }

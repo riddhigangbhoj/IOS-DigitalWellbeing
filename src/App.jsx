@@ -237,11 +237,105 @@ function App() {
                         )
                     )
                 ),
-                // iPhone Prototype (same as solution1)
+                // iPhone + Guide wrapper
                 React.createElement(
-                    window.iPhone,
-                    null,
-                    screenComponent
+                    'div',
+                    {
+                        style: {
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0px',
+                            position: 'relative'
+                        }
+                    },
+                    // iPhone Prototype
+                    React.createElement(
+                        window.iPhone,
+                        null,
+                        screenComponent
+                    ),
+                    // Guide steps
+                    React.createElement(
+                        'div',
+                        {
+                            style: {
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0px',
+                                marginLeft: '-20px',
+                                alignSelf: 'center',
+                                minWidth: '140px'
+                            }
+                        },
+                        (currentScreen === 'home' ? [
+                            { num: '1', text: 'Read the insight', top: '280px' },
+                            { num: '2', text: 'Swipe for next', top: '340px' },
+                            { num: '3', text: 'Tap "View more"', top: '400px' }
+                        ] : [
+                            { num: '1', text: 'Tap to expand', top: '280px' },
+                            { num: '2', text: 'Give feedback', top: '340px' },
+                            { num: '3', text: 'Scroll for more', top: '400px' },
+                            { num: '4', text: 'Try Week view', top: '460px' }
+                        ]).map((step, i, arr) =>
+                            React.createElement('div', {
+                                key: i,
+                                style: {
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                    marginBottom: i < arr.length - 1 ? '12px' : '0'
+                                }
+                            },
+                                // Arrow
+                                React.createElement('div', {
+                                    style: {
+                                        width: '20px',
+                                        height: '1px',
+                                        background: '#c7c7cc',
+                                        flexShrink: 0
+                                    }
+                                }),
+                                // Step box
+                                React.createElement('div', {
+                                    style: {
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '6px',
+                                        padding: '5px 10px',
+                                        borderRadius: '8px',
+                                        border: '1px solid #e5e5ea',
+                                        background: 'white',
+                                        whiteSpace: 'nowrap',
+                                        boxShadow: '0 1px 3px rgba(0,0,0,0.04)'
+                                    }
+                                },
+                                    React.createElement('span', {
+                                        style: {
+                                            width: '16px',
+                                            height: '16px',
+                                            borderRadius: '50%',
+                                            background: '#007aff',
+                                            color: 'white',
+                                            fontSize: '9px',
+                                            fontWeight: '600',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            flexShrink: 0
+                                        }
+                                    }, step.num),
+                                    React.createElement('span', {
+                                        style: {
+                                            fontSize: '10px',
+                                            color: '#6e6e73',
+                                            fontWeight: '400',
+                                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                                        }
+                                    }, step.text)
+                                )
+                            )
+                        )
+                    )
                 )
             )
     );
