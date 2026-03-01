@@ -1,5 +1,9 @@
-function InsightsDetailScreen({ onNavigate }) {
+function InsightsDetailScreen({ onNavigate, onViewChange }) {
     const [activeView, setActiveView] = React.useState('day');
+    const handleViewChange = (view) => {
+        setActiveView(view);
+        if (onViewChange) onViewChange(view);
+    };
     const [expandedInsight1, setExpandedInsight1] = React.useState(false);
     const [expandedInsight2, setExpandedInsight2] = React.useState(false);
     const [feedback1, setFeedback1] = React.useState(null);
@@ -152,7 +156,7 @@ function InsightsDetailScreen({ onNavigate }) {
                 }
             },
                 React.createElement('button', {
-                    onClick: () => setActiveView('week'),
+                    onClick: () => handleViewChange('week'),
                     style: {
                         flex: 1,
                         padding: '6px 17px',
@@ -169,7 +173,7 @@ function InsightsDetailScreen({ onNavigate }) {
                     }
                 }, 'Week'),
                 React.createElement('button', {
-                    onClick: () => setActiveView('day'),
+                    onClick: () => handleViewChange('day'),
                     style: {
                         flex: 1,
                         padding: '6px 17px',
