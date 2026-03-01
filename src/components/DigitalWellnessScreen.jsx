@@ -4,6 +4,59 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
     const [touchStart, setTouchStart] = React.useState(0);
     const [touchEnd, setTouchEnd] = React.useState(0);
     const [isDragging, setIsDragging] = React.useState(false);
+    const [homeFeedback1, setHomeFeedback1] = React.useState(null);
+    const [homeFeedback2, setHomeFeedback2] = React.useState(null);
+    const [showHomeTextPopup, setShowHomeTextPopup] = React.useState(null);
+    const [homeFeedbackText, setHomeFeedbackText] = React.useState('');
+
+    const handleHomeFeedback = (section, type) => {
+        if (type === 'something') {
+            setShowHomeTextPopup(section);
+            setHomeFeedbackText('');
+            return;
+        }
+        if (section === 1) setHomeFeedback1(type);
+        else setHomeFeedback2(type);
+    };
+
+    const submitHomeTextFeedback = () => {
+        if (showHomeTextPopup === 1) setHomeFeedback1('something');
+        else setHomeFeedback2('something');
+        setShowHomeTextPopup(null);
+        setHomeFeedbackText('');
+    };
+
+    const renderHomeFeedbackButtons = (section) => {
+        const selected = section === 1 ? homeFeedback1 : homeFeedback2;
+        const buttons = [
+            { label: 'Sounds right', type: 'right', activeBg: '#e8f5e9', activeColor: '#34c759', activeBorder: '#c8e6c9' },
+            { label: 'Not quite', type: 'not-quite', activeBg: '#ffeaea', activeColor: '#ff453a', activeBorder: '#ffcdd2' },
+            { label: 'Something else', type: 'something', activeBg: '#e3f2fd', activeColor: '#007aff', activeBorder: '#bbdefb' }
+        ];
+        return React.createElement('div', {
+            style: { display: 'flex', gap: '6px', flexWrap: 'wrap' }
+        },
+            buttons.map((btn, i) => {
+                const isActive = selected === btn.type;
+                return React.createElement('button', {
+                    key: i,
+                    onClick: () => handleHomeFeedback(section, btn.type),
+                    style: {
+                        padding: '4px 10px',
+                        borderRadius: '12px',
+                        border: '1px solid ' + (isActive ? btn.activeBorder : '#d1d1d6'),
+                        background: isActive ? btn.activeBg : 'transparent',
+                        color: isActive ? btn.activeColor : '#8e8e93',
+                        fontSize: '11px',
+                        fontWeight: isActive ? '500' : '400',
+                        cursor: 'pointer',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                        transition: 'all 0.2s ease'
+                    }
+                }, btn.label);
+            })
+        );
+    };
 
     const handleStart = (clientX) => {
         setTouchStart(clientX);
@@ -432,36 +485,7 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                                     React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic', flex: 1, minWidth: 0 } }, 'Low energy → phone as easy dopamine hit')
                                 )
                             ),
-                            React.createElement(
-                                'div',
-                                {
-                                    style: {
-                                        display: 'flex',
-                                        gap: '6px',
-                                        flexWrap: 'wrap'
-                                    }
-                                },
-                                ['Sounds right', 'Not quite', 'Something else'].map((label, i) =>
-                                    React.createElement(
-                                        'button',
-                                        {
-                                            key: i,
-                                            style: {
-                                                padding: '4px 10px',
-                                                borderRadius: '12px',
-                                                border: '1px solid #d1d1d6',
-                                                background: 'transparent',
-                                                color: '#8e8e93',
-                                                fontSize: '11px',
-                                                fontWeight: '400',
-                                                cursor: 'pointer',
-                                                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
-                                            }
-                                        },
-                                        label
-                                    )
-                                )
-                            )
+                            renderHomeFeedbackButtons(1)
                         ),
                         // Slide 2 - What is different today
                         React.createElement('div', {
@@ -521,8 +545,8 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                                     marginBottom: '10px',
                                     padding: '10px 12px',
                                     borderRadius: '8px',
-                                    border: '1px solid #ffd700',
-                                    background: '#fffbf0',
+                                    border: '1px solid #c8e6c9',
+                                    background: '#f1f8f4',
                                     display: 'flex',
                                     flexDirection: 'column',
                                     gap: '5px',
@@ -541,54 +565,25 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                                     }
                                 },
                                     React.createElement('i', {
-                                        className: 'ph-fill ph-barbell',
-                                        style: { fontSize: '14px', color: '#ff9f0a' }
+                                        className: 'ph-fill ph-trend-down',
+                                        style: { fontSize: '14px', color: '#34c759' }
                                     }),
-                                    'Gym day detected'
+                                    '25% less screen time'
                                 ),
                                 React.createElement('div', {
                                     style: { display: 'flex' }
                                 },
-                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '55px', flexShrink: 0 } }, 'Effect:'),
-                                    React.createElement('span', { style: { color: '#6e6e73', flex: 1, minWidth: 0 } }, '25% less evening screen time')
+                                    React.createElement('span', { style: { color: '#708238', minWidth: '55px', flexShrink: 0 } }, 'Cause:'),
+                                    React.createElement('span', { style: { color: '#6e6e73', flex: 1, minWidth: 0 } }, 'Gym day detected')
                                 ),
                                 React.createElement('div', {
                                     style: { display: 'flex' }
                                 },
-                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '55px', flexShrink: 0 } }, 'Why:'),
+                                    React.createElement('span', { style: { color: '#708238', minWidth: '55px', flexShrink: 0 } }, 'Why:'),
                                     React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic', flex: 1, minWidth: 0 } }, 'Exercise kills the restlessness that triggers scrolling')
                                 )
                             ),
-                            React.createElement(
-                                'div',
-                                {
-                                    style: {
-                                        display: 'flex',
-                                        gap: '6px',
-                                        flexWrap: 'wrap'
-                                    }
-                                },
-                                ['Sounds right', 'Not quite', 'Something else'].map((label, i) =>
-                                    React.createElement(
-                                        'button',
-                                        {
-                                            key: i,
-                                            style: {
-                                                padding: '4px 10px',
-                                                borderRadius: '12px',
-                                                border: '1px solid #d1d1d6',
-                                                background: 'transparent',
-                                                color: '#8e8e93',
-                                                fontSize: '11px',
-                                                fontWeight: '400',
-                                                cursor: 'pointer',
-                                                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
-                                            }
-                                        },
-                                        label
-                                    )
-                                )
-                            )
+                            renderHomeFeedbackButtons(2)
                         )
                     )
                 ),
@@ -875,6 +870,101 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
             },
             React.createElement('div', { style: { fontSize: '16px', color: '#ff3b30', marginBottom: '3px', fontWeight: '400' } }, 'Turn Off App & Website Activity'),
             React.createElement('div', { style: { fontSize: '12px', color: '#86868b', lineHeight: '1.3', fontWeight: '400' } }, 'Turning off App & Website Activity disables real-time reporting, Downtime, App Limits and Always Allowed.')
+        ),
+        // Text feedback popup overlay
+        showHomeTextPopup && React.createElement('div', {
+            onClick: () => setShowHomeTextPopup(null),
+            style: {
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'rgba(0,0,0,0.4)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 100,
+                padding: '20px'
+            }
+        },
+            React.createElement('div', {
+                onClick: (e) => e.stopPropagation(),
+                style: {
+                    background: 'white',
+                    borderRadius: '14px',
+                    padding: '20px',
+                    width: '100%',
+                    maxWidth: '300px',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
+                }
+            },
+                React.createElement('div', {
+                    style: {
+                        fontSize: '15px',
+                        fontWeight: '600',
+                        color: '#1a1a1a',
+                        marginBottom: '4px'
+                    }
+                }, 'What do you think?'),
+                React.createElement('div', {
+                    style: {
+                        fontSize: '12px',
+                        color: '#8e8e93',
+                        marginBottom: '12px'
+                    }
+                }, 'Tell us what actually happened'),
+                React.createElement('textarea', {
+                    value: homeFeedbackText,
+                    onChange: (e) => setHomeFeedbackText(e.target.value),
+                    placeholder: 'e.g. I was bored, not tired...',
+                    style: {
+                        width: '100%',
+                        minHeight: '80px',
+                        padding: '10px',
+                        borderRadius: '8px',
+                        border: '1px solid #d1d1d6',
+                        fontSize: '13px',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                        resize: 'none',
+                        outline: 'none',
+                        boxSizing: 'border-box',
+                        marginBottom: '12px'
+                    }
+                }),
+                React.createElement('div', {
+                    style: { display: 'flex', gap: '8px', justifyContent: 'flex-end' }
+                },
+                    React.createElement('button', {
+                        onClick: () => setShowHomeTextPopup(null),
+                        style: {
+                            padding: '8px 16px',
+                            borderRadius: '8px',
+                            border: '1px solid #d1d1d6',
+                            background: 'transparent',
+                            color: '#8e8e93',
+                            fontSize: '13px',
+                            fontWeight: '500',
+                            cursor: 'pointer',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                        }
+                    }, 'Cancel'),
+                    React.createElement('button', {
+                        onClick: submitHomeTextFeedback,
+                        style: {
+                            padding: '8px 16px',
+                            borderRadius: '8px',
+                            border: 'none',
+                            background: '#007aff',
+                            color: 'white',
+                            fontSize: '13px',
+                            fontWeight: '500',
+                            cursor: 'pointer',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                        }
+                    }, 'Submit')
+                )
+            )
         )
     );
 }

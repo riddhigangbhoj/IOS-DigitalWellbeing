@@ -2,6 +2,59 @@ function InsightsDetailScreen({ onNavigate }) {
     const [activeView, setActiveView] = React.useState('day');
     const [expandedInsight1, setExpandedInsight1] = React.useState(false);
     const [expandedInsight2, setExpandedInsight2] = React.useState(false);
+    const [feedback1, setFeedback1] = React.useState(null);
+    const [feedback2, setFeedback2] = React.useState(null);
+    const [showTextPopup, setShowTextPopup] = React.useState(null);
+    const [feedbackText, setFeedbackText] = React.useState('');
+
+    const handleFeedback = (section, type) => {
+        if (type === 'something') {
+            setShowTextPopup(section);
+            setFeedbackText('');
+            return;
+        }
+        if (section === 1) setFeedback1(type);
+        else setFeedback2(type);
+    };
+
+    const submitTextFeedback = () => {
+        if (showTextPopup === 1) setFeedback1('something');
+        else setFeedback2('something');
+        setShowTextPopup(null);
+        setFeedbackText('');
+    };
+
+    const renderFeedbackButtons = (section) => {
+        const selected = section === 1 ? feedback1 : feedback2;
+        const buttons = [
+            { label: 'Sounds right', type: 'right', activeBg: '#e8f5e9', activeColor: '#34c759', activeBorder: '#c8e6c9' },
+            { label: 'Not quite', type: 'not-quite', activeBg: '#ffeaea', activeColor: '#ff453a', activeBorder: '#ffcdd2' },
+            { label: 'Something else', type: 'something', activeBg: '#e3f2fd', activeColor: '#007aff', activeBorder: '#bbdefb' }
+        ];
+        return React.createElement('div', {
+            style: { display: 'flex', gap: '6px', flexWrap: 'wrap' }
+        },
+            buttons.map((btn, i) => {
+                const isActive = selected === btn.type;
+                return React.createElement('button', {
+                    key: i,
+                    onClick: () => handleFeedback(section, btn.type),
+                    style: {
+                        padding: '4px 10px',
+                        borderRadius: '12px',
+                        border: '1px solid ' + (isActive ? btn.activeBorder : '#d1d1d6'),
+                        background: isActive ? btn.activeBg : 'transparent',
+                        color: isActive ? btn.activeColor : '#8e8e93',
+                        fontSize: '11px',
+                        fontWeight: isActive ? '500' : '400',
+                        cursor: 'pointer',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                        transition: 'all 0.2s ease'
+                    }
+                }, btn.label);
+            })
+        );
+    };
 
     return React.createElement(
         'div',
@@ -223,7 +276,7 @@ function InsightsDetailScreen({ onNavigate }) {
                         React.createElement('div', {
                             style: { display: 'flex' }
                         },
-                            React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Freq:'),
+                            React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Pattern:'),
                             React.createElement('span', { style: { color: '#6e6e73' } }, 'Repeated 6 times in 2 months')
                         ),
                         React.createElement('div', {
@@ -233,36 +286,7 @@ function InsightsDetailScreen({ onNavigate }) {
                             React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Low energy → phone becomes the easy dopamine hit')
                         )
                     ),
-                    React.createElement(
-                        'div',
-                        {
-                            style: {
-                                display: 'flex',
-                                gap: '6px',
-                                flexWrap: 'wrap'
-                            }
-                        },
-                        ['Sounds right', 'Not quite', 'Something else'].map((label, i) =>
-                            React.createElement(
-                                'button',
-                                {
-                                    key: i,
-                                    style: {
-                                        padding: '4px 10px',
-                                        borderRadius: '12px',
-                                        border: '1px solid #d1d1d6',
-                                        background: 'transparent',
-                                        color: '#8e8e93',
-                                        fontSize: '11px',
-                                        fontWeight: '400',
-                                        cursor: 'pointer',
-                                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
-                                    }
-                                },
-                                label
-                            )
-                        )
-                    )
+                    renderFeedbackButtons(1)
                 )
             ),
             // Insight 2 - What is different today
@@ -311,8 +335,8 @@ function InsightsDetailScreen({ onNavigate }) {
                             marginBottom: '12px',
                             padding: '10px 12px',
                             borderRadius: '8px',
-                            border: '1px solid #ffd700',
-                            background: '#fffbf0',
+                            border: '1px solid #c8e6c9',
+                            background: '#f1f8f4',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '6px'
@@ -328,66 +352,31 @@ function InsightsDetailScreen({ onNavigate }) {
                             }
                         },
                             React.createElement('i', {
-                                className: 'ph-fill ph-barbell',
-                                style: { fontSize: '14px', color: '#ff9f0a' }
+                                className: 'ph-fill ph-trend-down',
+                                style: { fontSize: '14px', color: '#34c759' }
                             }),
-                            'Gym day detected'
+                            '25% less screen time'
                         ),
                         React.createElement('div', {
                             style: { display: 'flex' }
                         },
-                            React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Effect:'),
-                            React.createElement('span', { style: { color: '#6e6e73' } }, '25% less evening screen time')
+                            React.createElement('span', { style: { color: '#708238', minWidth: '70px', flexShrink: 0 } }, 'Cause:'),
+                            React.createElement('span', { style: { color: '#6e6e73' } }, 'Gym day detected')
                         ),
                         React.createElement('div', {
                             style: { display: 'flex' }
                         },
-                            React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Predict:'),
-                            React.createElement('span', { style: { color: '#6e6e73' } }, 'No 9-11 PM spike tonight')
+                            React.createElement('span', { style: { color: '#708238', minWidth: '70px', flexShrink: 0 } }, 'Predict:'),
+                            React.createElement('span', { style: { color: '#6e6e73' } }, 'No 9-11 PM spike tonight (6 weeks of data)')
                         ),
                         React.createElement('div', {
                             style: { display: 'flex' }
                         },
-                            React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Based on:'),
-                            React.createElement('span', { style: { color: '#6e6e73' } }, '6 weeks of evening data')
-                        ),
-                        React.createElement('div', {
-                            style: { display: 'flex' }
-                        },
-                            React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Why:'),
-                            React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Physical tiredness replaces the restlessness that drives scrolling')
+                            React.createElement('span', { style: { color: '#708238', minWidth: '70px', flexShrink: 0 } }, 'Why:'),
+                            React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Exercise kills the restlessness that triggers scrolling')
                         )
                     ),
-                    React.createElement(
-                        'div',
-                        {
-                            style: {
-                                display: 'flex',
-                                gap: '6px',
-                                flexWrap: 'wrap'
-                            }
-                        },
-                        ['Sounds right', 'Not quite', 'Something else'].map((label, i) =>
-                            React.createElement(
-                                'button',
-                                {
-                                    key: i,
-                                    style: {
-                                        padding: '4px 10px',
-                                        borderRadius: '12px',
-                                        border: '1px solid #d1d1d6',
-                                        background: 'transparent',
-                                        color: '#8e8e93',
-                                        fontSize: '11px',
-                                        fontWeight: '400',
-                                        cursor: 'pointer',
-                                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
-                                    }
-                                },
-                                label
-                            )
-                        )
-                    )
+                    renderFeedbackButtons(2)
                 )
             ),
             // Key Moments section
@@ -901,6 +890,101 @@ function InsightsDetailScreen({ onNavigate }) {
                         React.createElement('span', { style: { color: '#708238', minWidth: '70px', flexShrink: 0 } }, 'Felt like:'),
                         React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Calm mornings, started the day on your terms')
                     )
+                )
+            )
+        ),
+        // Text feedback popup overlay
+        showTextPopup && React.createElement('div', {
+            onClick: () => setShowTextPopup(null),
+            style: {
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'rgba(0,0,0,0.4)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 100,
+                padding: '20px'
+            }
+        },
+            React.createElement('div', {
+                onClick: (e) => e.stopPropagation(),
+                style: {
+                    background: 'white',
+                    borderRadius: '14px',
+                    padding: '20px',
+                    width: '100%',
+                    maxWidth: '300px',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
+                }
+            },
+                React.createElement('div', {
+                    style: {
+                        fontSize: '15px',
+                        fontWeight: '600',
+                        color: '#1a1a1a',
+                        marginBottom: '4px'
+                    }
+                }, 'What do you think?'),
+                React.createElement('div', {
+                    style: {
+                        fontSize: '12px',
+                        color: '#8e8e93',
+                        marginBottom: '12px'
+                    }
+                }, 'Tell us what actually happened'),
+                React.createElement('textarea', {
+                    value: feedbackText,
+                    onChange: (e) => setFeedbackText(e.target.value),
+                    placeholder: 'e.g. I was bored, not tired...',
+                    style: {
+                        width: '100%',
+                        minHeight: '80px',
+                        padding: '10px',
+                        borderRadius: '8px',
+                        border: '1px solid #d1d1d6',
+                        fontSize: '13px',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                        resize: 'none',
+                        outline: 'none',
+                        boxSizing: 'border-box',
+                        marginBottom: '12px'
+                    }
+                }),
+                React.createElement('div', {
+                    style: { display: 'flex', gap: '8px', justifyContent: 'flex-end' }
+                },
+                    React.createElement('button', {
+                        onClick: () => setShowTextPopup(null),
+                        style: {
+                            padding: '8px 16px',
+                            borderRadius: '8px',
+                            border: '1px solid #d1d1d6',
+                            background: 'transparent',
+                            color: '#8e8e93',
+                            fontSize: '13px',
+                            fontWeight: '500',
+                            cursor: 'pointer',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                        }
+                    }, 'Cancel'),
+                    React.createElement('button', {
+                        onClick: submitTextFeedback,
+                        style: {
+                            padding: '8px 16px',
+                            borderRadius: '8px',
+                            border: 'none',
+                            background: '#007aff',
+                            color: 'white',
+                            fontSize: '13px',
+                            fontWeight: '500',
+                            cursor: 'pointer',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                        }
+                    }, 'Submit')
                 )
             )
         )
