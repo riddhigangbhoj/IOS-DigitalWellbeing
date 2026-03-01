@@ -298,7 +298,7 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                     textTransform: 'uppercase',
                     letterSpacing: '-0.08px'
                 }
-            }, 'Solution'),
+            }, 'Insights'),
 
             React.createElement(
                 'div',
@@ -354,7 +354,7 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                                     style: {
                                         fontSize: '14px',
                                         color: '#1a1a1a',
-                                        fontWeight: '600'
+                                        fontWeight: '400'
                                     }
                                 }, 'What happened today'),
                                 React.createElement('button', {
@@ -385,46 +385,46 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                                 style: {
                                     fontSize: '13px',
                                     color: '#1a1a1a',
-                                    lineHeight: '1.5',
+                                    lineHeight: '1.6',
                                     fontWeight: '400',
-                                    marginBottom: '10px',
-                                    padding: '8px 10px',
+                                    marginBottom: '12px',
+                                    padding: '10px 12px',
                                     borderRadius: '8px',
                                     border: '1px solid #ffd700',
-                                    background: '#fffbf0'
+                                    background: '#fffbf0',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '6px'
                                 }
                             },
                                 React.createElement('div', {
                                     style: {
+                                        fontWeight: '400',
+                                        color: '#1a1a1a',
                                         display: 'flex',
-                                        alignItems: 'flex-start',
-                                        gap: '5px'
+                                        alignItems: 'center',
+                                        gap: '6px'
                                     }
                                 },
                                     React.createElement('i', {
                                         className: 'ph-fill ph-trend-up',
-                                        style: {
-                                            fontSize: '14px',
-                                            color: '#ff453a',
-                                            marginTop: '2px'
-                                        }
+                                        style: { fontSize: '14px', color: '#ff453a' }
                                     }),
-                                    React.createElement('div', null,
-                                        'More 50% phone checks this afternoon',
-                                        React.createElement('br'),
-                                        'due to 3h less sleep than usual last night'
-                                    )
+                                    '50% more phone checks this afternoon'
+                                ),
+                                React.createElement('div', {
+                                    style: { display: 'flex' }
+                                },
+                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Cause:'),
+                                    React.createElement('span', { style: { color: '#6e6e73' } }, '3h less sleep than usual')
+                                ),
+                                React.createElement('div', {
+                                    style: { display: 'flex' }
+                                },
+                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Freq:'),
+                                    React.createElement('span', { style: { color: '#6e6e73' } }, 'Repeated 6 times in 2 months')
                                 )
                             ),
-                            React.createElement('div', {
-                                style: {
-                                    fontSize: '13px',
-                                    color: '#8e8e93',
-                                    lineHeight: '1.5',
-                                    fontWeight: '400',
-                                    marginBottom: '14px'
-                                }
-                            }, 'Repeated 6 times in 2 months'),
                             React.createElement(
                                 'div',
                                 {
@@ -475,7 +475,7 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                                     style: {
                                         fontSize: '14px',
                                         color: '#1a1a1a',
-                                        fontWeight: '600'
+                                        fontWeight: '400'
                                     }
                                 }, 'What is different today'),
                                 React.createElement('button', {
@@ -506,46 +506,52 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
                                 style: {
                                     fontSize: '13px',
                                     color: '#1a1a1a',
-                                    lineHeight: '1.5',
+                                    lineHeight: '1.6',
                                     fontWeight: '400',
-                                    marginBottom: '10px',
-                                    padding: '8px 10px',
+                                    marginBottom: '12px',
+                                    padding: '10px 12px',
                                     borderRadius: '8px',
                                     border: '1px solid #ffd700',
-                                    background: '#fffbf0'
+                                    background: '#fffbf0',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '6px'
                                 }
                             },
                                 React.createElement('div', {
                                     style: {
+                                        fontWeight: '400',
+                                        color: '#1a1a1a',
                                         display: 'flex',
-                                        alignItems: 'flex-start',
-                                        gap: '5px'
+                                        alignItems: 'center',
+                                        gap: '6px'
                                     }
                                 },
                                     React.createElement('i', {
                                         className: 'ph-fill ph-barbell',
-                                        style: {
-                                            fontSize: '14px',
-                                            color: '#ff9f0a',
-                                            marginTop: '2px'
-                                        }
+                                        style: { fontSize: '14px', color: '#ff9f0a' }
                                     }),
-                                    React.createElement('div', null,
-                                        'Gym day = 25% less evening screen time',
-                                        React.createElement('br'),
-                                        'No 9-11 PM spike tonight'
-                                    )
+                                    'Gym day detected'
+                                ),
+                                React.createElement('div', {
+                                    style: { display: 'flex' }
+                                },
+                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Effect:'),
+                                    React.createElement('span', { style: { color: '#6e6e73' } }, '25% less evening screen time')
+                                ),
+                                React.createElement('div', {
+                                    style: { display: 'flex' }
+                                },
+                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Predict:'),
+                                    React.createElement('span', { style: { color: '#6e6e73' } }, 'No 9-11 PM spike tonight')
+                                ),
+                                React.createElement('div', {
+                                    style: { display: 'flex' }
+                                },
+                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '70px', flexShrink: 0 } }, 'Based on:'),
+                                    React.createElement('span', { style: { color: '#6e6e73' } }, '6 weeks of evening data')
                                 )
                             ),
-                            React.createElement('div', {
-                                style: {
-                                    fontSize: '13px',
-                                    color: '#8e8e93',
-                                    lineHeight: '1.5',
-                                    fontWeight: '400',
-                                    marginBottom: '14px'
-                                }
-                            }, 'Predicted from 6 weeks of evening data'),
                             React.createElement(
                                 'div',
                                 {
