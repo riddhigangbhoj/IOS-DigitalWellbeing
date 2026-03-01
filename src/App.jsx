@@ -24,7 +24,9 @@ function App() {
     };
 
     let screenComponent;
-    if (currentScreen === 'activity') {
+    if (activeSolution === 'wireframe') {
+        screenComponent = React.createElement(window.WireframeScreen);
+    } else if (currentScreen === 'activity') {
         screenComponent = React.createElement(window.AppActivityScreen, {
             onNavigate: handleNavigate
         });
@@ -43,7 +45,7 @@ function App() {
     return React.createElement(
         'div',
         { className: 'app-container' },
-        activeSolution === 'solution1' ?
+        (activeSolution === 'solution1' || activeSolution === 'wireframe') ?
             React.createElement(
                 'div',
                 {
@@ -135,6 +137,33 @@ function App() {
                                 }
                             },
                             'Solution'
+                        ),
+                        React.createElement(
+                            'button',
+                            {
+                                onClick: (e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    handleSolutionChange('wireframe');
+                                },
+                                style: {
+                                    padding: '8px 22px',
+                                    borderRadius: '28px',
+                                    border: 'none',
+                                    background: activeSolution === 'wireframe' ? '#007aff' : 'transparent',
+                                    color: activeSolution === 'wireframe' ? 'white' : '#666',
+                                    fontSize: '11px',
+                                    fontWeight: '600',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.3s ease',
+                                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                                    userSelect: 'none',
+                                    WebkitUserSelect: 'none',
+                                    position: 'relative',
+                                    zIndex: 1002
+                                }
+                            },
+                            'Wireframe'
                         )
                     )
                 ),
@@ -237,6 +266,33 @@ function App() {
                                 }
                             },
                             'Solution'
+                        ),
+                        React.createElement(
+                            'button',
+                            {
+                                onClick: (e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    handleSolutionChange('wireframe');
+                                },
+                                style: {
+                                    padding: '8px 22px',
+                                    borderRadius: '28px',
+                                    border: 'none',
+                                    background: activeSolution === 'wireframe' ? '#007aff' : 'transparent',
+                                    color: activeSolution === 'wireframe' ? 'white' : '#666',
+                                    fontSize: '11px',
+                                    fontWeight: '600',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.3s ease',
+                                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                                    userSelect: 'none',
+                                    WebkitUserSelect: 'none',
+                                    position: 'relative',
+                                    zIndex: 1002
+                                }
+                            },
+                            'Wireframe'
                         )
                     )
                 ),
