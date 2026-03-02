@@ -10,6 +10,7 @@ function InsightsDetailScreen({ onNavigate, onViewChange }) {
     const [feedback2, setFeedback2] = React.useState(null);
     const [showTextPopup, setShowTextPopup] = React.useState(null);
     const [feedbackText, setFeedbackText] = React.useState('');
+    const [showInfoPopup, setShowInfoPopup] = React.useState(false);
 
     const handleFeedback = (section, type) => {
         if (type === 'something') {
@@ -190,8 +191,26 @@ function InsightsDetailScreen({ onNavigate, onViewChange }) {
                     }
                 }, 'Day')
             ),
-            // Empty div for spacing
-            React.createElement('div', { style: { width: '32px' } })
+            // Info button
+            React.createElement('button', {
+                onClick: () => setShowInfoPopup(true),
+                style: {
+                    width: '32px',
+                    height: '32px',
+                    borderRadius: '50%',
+                    background: 'white',
+                    border: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    color: '#007aff',
+                    fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", serif'
+                }
+            }, 'i')
         ),
         // Content area with insights
         activeView === 'day' ? React.createElement(
@@ -888,6 +907,134 @@ function InsightsDetailScreen({ onNavigate, onViewChange }) {
                         React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Calm mornings, started the day on your terms')
                     )
                 )
+            )
+        ),
+        // Info popup overlay
+        showInfoPopup && React.createElement('div', {
+            onClick: () => setShowInfoPopup(false),
+            style: {
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'rgba(0,0,0,0.4)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 100,
+                padding: '20px'
+            }
+        },
+            React.createElement('div', {
+                onClick: (e) => e.stopPropagation(),
+                style: {
+                    background: 'white',
+                    borderRadius: '16px',
+                    padding: '24px',
+                    width: '100%',
+                    maxWidth: '300px',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
+                }
+            },
+                React.createElement('div', {
+                    style: {
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        marginBottom: '14px'
+                    }
+                },
+                    React.createElement('div', {
+                        style: {
+                            width: '28px',
+                            height: '28px',
+                            borderRadius: '50%',
+                            background: '#e3f2fd',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            fontSize: '14px',
+                            fontWeight: '600',
+                            color: '#007aff',
+                            flexShrink: 0
+                        }
+                    }, 'i'),
+                    React.createElement('span', {
+                        style: {
+                            fontSize: '16px',
+                            fontWeight: '600',
+                            color: '#1a1a1a',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                        }
+                    }, 'How This Works')
+                ),
+                React.createElement('div', {
+                    style: {
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '14px',
+                        marginBottom: '18px'
+                    }
+                },
+                    // Row 1 - Eye icon
+                    React.createElement('div', {
+                        style: { display: 'flex', gap: '0px', alignItems: 'flex-start' }
+                    },
+                        React.createElement('div', {
+                            style: { width: '28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '1px' }
+                        },
+                            React.createElement('i', {
+                                className: 'ph-fill ph-eye',
+                                style: { fontSize: '14px', color: '#007aff' }
+                            })
+                        ),
+                        React.createElement('div', { style: { flex: 1 } },
+                            React.createElement('div', {
+                                style: { fontSize: '13px', fontWeight: '400', color: '#1a1a1a', marginBottom: '3px', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                            }, 'On-Device AI'),
+                            React.createElement('div', {
+                                style: { fontSize: '12px', color: '#8e8e93', lineHeight: '1.5', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                            }, 'Insights are generated by an AI model that analyzes your patterns based on your phone activity locally on your device.')
+                        )
+                    ),
+                    // Row 2 - Lock icon
+                    React.createElement('div', {
+                        style: { display: 'flex', gap: '0px', alignItems: 'flex-start' }
+                    },
+                        React.createElement('div', {
+                            style: { width: '28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '1px' }
+                        },
+                            React.createElement('i', {
+                                className: 'ph-fill ph-lock',
+                                style: { fontSize: '14px', color: '#34c759' }
+                            })
+                        ),
+                        React.createElement('div', { style: { flex: 1 } },
+                            React.createElement('div', {
+                                style: { fontSize: '13px', fontWeight: '400', color: '#1a1a1a', marginBottom: '3px', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                            }, 'Private & Secure'),
+                            React.createElement('div', {
+                                style: { fontSize: '12px', color: '#8e8e93', lineHeight: '1.5', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                            }, 'Your data never leaves your phone. The AI model runs entirely on your device with no external servers involved.')
+                        )
+                    )
+                ),
+                React.createElement('button', {
+                    onClick: () => setShowInfoPopup(false),
+                    style: {
+                        width: '100%',
+                        padding: '10px',
+                        borderRadius: '10px',
+                        border: 'none',
+                        background: '#007aff',
+                        color: 'white',
+                        fontSize: '14px',
+                        fontWeight: '500',
+                        cursor: 'pointer',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                    }
+                }, 'Got it')
             )
         ),
         // Text feedback popup overlay
