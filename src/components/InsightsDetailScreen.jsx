@@ -11,6 +11,7 @@ function InsightsDetailScreen({ onNavigate, onViewChange }) {
     const [showTextPopup, setShowTextPopup] = React.useState(null);
     const [feedbackText, setFeedbackText] = React.useState('');
     const [showInfoPopup, setShowInfoPopup] = React.useState(false);
+    const [showMemojiMoods, setShowMemojiMoods] = React.useState(false);
 
     const handleFeedback = (section, type) => {
         if (type === 'something') {
@@ -107,7 +108,7 @@ function InsightsDetailScreen({ onNavigate, onViewChange }) {
             )
         ),
         // Back button and Week/Day toggle container
-        React.createElement('div', {
+        !showMemojiMoods && React.createElement('div', {
             style: {
                 position: 'absolute',
                 top: '54px',
@@ -213,7 +214,7 @@ function InsightsDetailScreen({ onNavigate, onViewChange }) {
             }, 'i')
         ),
         // Content area with insights
-        activeView === 'day' ? React.createElement(
+        !showMemojiMoods && (activeView === 'day' ? React.createElement(
             'div',
             {
                 style: {
@@ -905,6 +906,163 @@ function InsightsDetailScreen({ onNavigate, onViewChange }) {
                     },
                         React.createElement('span', { style: { color: '#708238', minWidth: '70px', flexShrink: 0 } }, 'Felt like:'),
                         React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic' } }, 'Calm mornings, started the day on your terms')
+                    )
+                )
+            ),
+            // View weekly mood stickers button
+            React.createElement('div', {
+                onClick: () => setShowMemojiMoods(true),
+                style: {
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    marginTop: '20px',
+                    cursor: 'pointer'
+                }
+            },
+                React.createElement('span', {
+                    style: {
+                        fontSize: '12px',
+                        color: '#8e8e93',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                    }
+                }, 'View weekly mood stickers'),
+                React.createElement('i', {
+                    className: 'ph ph-arrow-right',
+                    style: { fontSize: '12px', color: '#8e8e93' }
+                })
+            )
+        )),
+        // Memoji moods overlay
+        showMemojiMoods && React.createElement('div', {
+            style: {
+                background: '#f2f2f7'
+            }
+        },
+            // Header
+            React.createElement('div', {
+                style: {
+                    padding: '10px 20px 16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                }
+            },
+                React.createElement('button', {
+                    onClick: () => setShowMemojiMoods(false),
+                    style: {
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        background: 'white',
+                        border: 'none',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                    }
+                },
+                    React.createElement('i', {
+                        className: 'ph ph-caret-left',
+                        style: { fontSize: '16px', color: '#1a1a1a' }
+                    })
+                ),
+                React.createElement('span', {
+                    style: {
+                        fontSize: '11px',
+                        fontWeight: '500',
+                        color: '#8e8e93',
+                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                        letterSpacing: '0.5px',
+                        textTransform: 'uppercase'
+                    }
+                }, 'Your Week in Moods')
+            ),
+            // 2x2 grid
+            React.createElement('div', {
+                style: {
+                    padding: '0 20px 20px',
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr',
+                    gap: '12px'
+                }
+            },
+                // Card 1 - Commute/Scrolling
+                React.createElement('div', {
+                    style: {
+                        background: 'white',
+                        borderRadius: '14px',
+                        overflow: 'hidden',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                    }
+                },
+                    React.createElement('img', {
+                        src: 'src/assets/mood-commute.png',
+                        style: { width: '100%', height: 'auto', display: 'block' }
+                    }),
+                    React.createElement('div', { style: { padding: '8px 10px' } },
+                        React.createElement('div', {
+                            style: { fontSize: '11px', fontWeight: '400', color: '#8e8e93', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                        }, 'Commute Scroll')
+                    )
+                ),
+                // Card 2 - Morning Run
+                React.createElement('div', {
+                    style: {
+                        background: 'white',
+                        borderRadius: '14px',
+                        overflow: 'hidden',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                    }
+                },
+                    React.createElement('img', {
+                        src: 'src/assets/mood-running.png',
+                        style: { width: '100%', height: 'auto', display: 'block' }
+                    }),
+                    React.createElement('div', { style: { padding: '8px 10px' } },
+                        React.createElement('div', {
+                            style: { fontSize: '11px', fontWeight: '400', color: '#8e8e93', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                        }, 'Morning Run')
+                    )
+                ),
+                // Card 3 - Evening Chess
+                React.createElement('div', {
+                    style: {
+                        background: 'white',
+                        borderRadius: '14px',
+                        overflow: 'hidden',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                    }
+                },
+                    React.createElement('img', {
+                        src: 'src/assets/mood-chess.png',
+                        style: { width: '100%', height: 'auto', display: 'block' }
+                    }),
+                    React.createElement('div', { style: { padding: '8px 10px' } },
+                        React.createElement('div', {
+                            style: { fontSize: '11px', fontWeight: '400', color: '#8e8e93', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                        }, 'Evening Chess')
+                    )
+                ),
+                // Card 4 - Calm/Meditation
+                React.createElement('div', {
+                    style: {
+                        background: 'white',
+                        borderRadius: '14px',
+                        overflow: 'hidden',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                    }
+                },
+                    React.createElement('img', {
+                        src: 'src/assets/mood-meditation.png',
+                        style: { width: '100%', height: 'auto', display: 'block' }
+                    }),
+                    React.createElement('div', { style: { padding: '8px 10px' } },
+                        React.createElement('div', {
+                            style: { fontSize: '11px', fontWeight: '400', color: '#8e8e93', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                        }, 'Balanced')
                     )
                 )
             )
