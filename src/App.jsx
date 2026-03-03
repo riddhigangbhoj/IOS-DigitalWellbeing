@@ -327,8 +327,10 @@ function App() {
                         // Step 3 - Try Week view (left, near toggle)
                         { num: '3', text: 'Try Week view', side: 'left', top: '12%' }
                     ] : currentScreen === 'insights-detail' && insightView === 'week' ? [
-                        // Only scroll hint
-                        { num: '', text: 'Scroll to view more', side: 'right', top: '50%' }
+                        { num: '1', text: 'Scroll to view more', side: 'left', top: '50%' },
+                        { num: '2', text: 'Scroll to view weekly mood stickers', side: 'right', top: '80%' },
+                        { num: '3', text: 'Tap ⓘ for privacy info', side: 'right', top: '12%' },
+                        { num: '4', text: 'Manage tracking', side: 'right', top: '60%' }
                     ] : []).map((step, i) =>
                         React.createElement('div', {
                             key: step.text,
