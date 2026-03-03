@@ -11,6 +11,16 @@ function InsightsDetailScreen({ onNavigate, onViewChange }) {
     const [showTextPopup, setShowTextPopup] = React.useState(null);
     const [feedbackText, setFeedbackText] = React.useState('');
     const [showInfoPopup, setShowInfoPopup] = React.useState(false);
+    const [infoPopupScreen, setInfoPopupScreen] = React.useState('main');
+    const [trackingEnabled, setTrackingEnabled] = React.useState(true);
+    const [categoryToggles, setCategoryToggles] = React.useState({
+        socialMedia: true,
+        entertainment: true,
+        gaming: true,
+        productivity: false,
+        health: true,
+        communication: true
+    });
     const [showMemojiMoods, setShowMemojiMoods] = React.useState(false);
 
     const handleFeedback = (section, type) => {
@@ -1069,7 +1079,7 @@ function InsightsDetailScreen({ onNavigate, onViewChange }) {
         ),
         // Info popup overlay
         showInfoPopup && React.createElement('div', {
-            onClick: () => setShowInfoPopup(false),
+            onClick: () => { setShowInfoPopup(false); setInfoPopupScreen('main'); },
             style: {
                 position: 'absolute',
                 top: 0,
@@ -1095,104 +1105,299 @@ function InsightsDetailScreen({ onNavigate, onViewChange }) {
                     boxShadow: '0 8px 32px rgba(0,0,0,0.2)'
                 }
             },
-                React.createElement('div', {
-                    style: {
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        marginBottom: '14px'
-                    }
-                },
+                // Main screen
+                infoPopupScreen === 'main' ? React.createElement(React.Fragment, null,
                     React.createElement('div', {
                         style: {
-                            width: '28px',
-                            height: '28px',
-                            borderRadius: '50%',
-                            background: '#e3f2fd',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            marginBottom: '14px'
+                        }
+                    },
+                        React.createElement('div', {
+                            style: {
+                                width: '28px',
+                                height: '28px',
+                                borderRadius: '50%',
+                                background: '#e3f2fd',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '14px',
+                                fontWeight: '600',
+                                color: '#007aff',
+                                flexShrink: 0
+                            }
+                        }, 'i'),
+                        React.createElement('span', {
+                            style: {
+                                fontSize: '16px',
+                                fontWeight: '600',
+                                color: '#1a1a1a',
+                                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                            }
+                        }, 'How This Works')
+                    ),
+                    React.createElement('div', {
+                        style: {
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '14px',
+                            marginBottom: '18px'
+                        }
+                    },
+                        // Row 1 - Eye icon
+                        React.createElement('div', {
+                            style: { display: 'flex', gap: '0px', alignItems: 'flex-start' }
+                        },
+                            React.createElement('div', {
+                                style: { width: '28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '1px' }
+                            },
+                                React.createElement('i', {
+                                    className: 'ph-fill ph-eye',
+                                    style: { fontSize: '14px', color: '#007aff' }
+                                })
+                            ),
+                            React.createElement('div', { style: { flex: 1 } },
+                                React.createElement('div', {
+                                    style: { fontSize: '13px', fontWeight: '400', color: '#1a1a1a', marginBottom: '3px', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                                }, 'On-Device AI'),
+                                React.createElement('div', {
+                                    style: { fontSize: '12px', color: '#8e8e93', lineHeight: '1.5', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                                }, 'Insights are generated by an AI model that analyzes your patterns based on your phone activity locally on your device.')
+                            )
+                        ),
+                        // Row 2 - Lock icon
+                        React.createElement('div', {
+                            style: { display: 'flex', gap: '0px', alignItems: 'flex-start' }
+                        },
+                            React.createElement('div', {
+                                style: { width: '28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '1px' }
+                            },
+                                React.createElement('i', {
+                                    className: 'ph-fill ph-lock',
+                                    style: { fontSize: '14px', color: '#34c759' }
+                                })
+                            ),
+                            React.createElement('div', { style: { flex: 1 } },
+                                React.createElement('div', {
+                                    style: { fontSize: '13px', fontWeight: '400', color: '#1a1a1a', marginBottom: '3px', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                                }, 'Private & Secure'),
+                                React.createElement('div', {
+                                    style: { fontSize: '12px', color: '#8e8e93', lineHeight: '1.5', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                                }, 'Your data never leaves your phone. The AI model runs entirely on your device with no external servers involved.')
+                            )
+                        )
+                    ),
+                    // Got it button
+                    React.createElement('button', {
+                        onClick: () => { setShowInfoPopup(false); setInfoPopupScreen('main'); },
+                        style: {
+                            width: '100%',
+                            padding: '10px',
+                            borderRadius: '10px',
+                            border: 'none',
+                            background: '#007aff',
+                            color: 'white',
+                            fontSize: '14px',
+                            fontWeight: '500',
+                            cursor: 'pointer',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                        }
+                    }, 'Got it'),
+                    // Manage categories link
+                    React.createElement('div', {
+                        onClick: () => setInfoPopupScreen('categories'),
+                        style: {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            fontSize: '14px',
-                            fontWeight: '600',
-                            color: '#007aff',
-                            flexShrink: 0
+                            gap: '4px',
+                            marginTop: '14px',
+                            cursor: 'pointer'
                         }
-                    }, 'i'),
-                    React.createElement('span', {
+                    },
+                        React.createElement('span', {
+                            style: {
+                                fontSize: '12px',
+                                color: '#007aff',
+                                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                            }
+                        }, 'Manage tracking categories'),
+                        React.createElement('i', {
+                            className: 'ph ph-caret-right',
+                            style: { fontSize: '11px', color: '#007aff' }
+                        })
+                    ),
+                    // Stop tracking button
+                    React.createElement('button', {
+                        onClick: () => setTrackingEnabled(!trackingEnabled),
                         style: {
-                            fontSize: '16px',
-                            fontWeight: '600',
-                            color: '#1a1a1a',
+                            width: '100%',
+                            padding: '10px',
+                            borderRadius: '10px',
+                            border: 'none',
+                            background: trackingEnabled ? '#ff3b3015' : '#34c75915',
+                            color: trackingEnabled ? '#ff3b30' : '#34c759',
+                            fontSize: '13px',
+                            fontWeight: '500',
+                            cursor: 'pointer',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                            marginTop: '10px'
+                        }
+                    }, trackingEnabled ? 'Stop Tracking Insights' : 'Resume Tracking Insights')
+                )
+                // Categories screen
+                : React.createElement(React.Fragment, null,
+                    // Header with back button
+                    React.createElement('div', {
+                        style: {
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            marginBottom: '16px'
+                        }
+                    },
+                        React.createElement('button', {
+                            onClick: () => setInfoPopupScreen('main'),
+                            style: {
+                                width: '28px',
+                                height: '28px',
+                                borderRadius: '50%',
+                                background: '#f2f2f7',
+                                border: 'none',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                cursor: 'pointer',
+                                flexShrink: 0
+                            }
+                        },
+                            React.createElement('i', {
+                                className: 'ph ph-caret-left',
+                                style: { fontSize: '13px', color: '#1a1a1a' }
+                            })
+                        ),
+                        React.createElement('span', {
+                            style: {
+                                fontSize: '15px',
+                                fontWeight: '600',
+                                color: '#1a1a1a',
+                                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                            }
+                        }, 'Tracking Categories')
+                    ),
+                    // Subtitle
+                    React.createElement('div', {
+                        style: {
+                            fontSize: '12px',
+                            color: '#8e8e93',
+                            lineHeight: '1.5',
+                            marginBottom: '16px',
                             fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
                         }
-                    }, 'How This Works')
-                ),
-                React.createElement('div', {
-                    style: {
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '14px',
-                        marginBottom: '18px'
-                    }
-                },
-                    // Row 1 - Eye icon
+                    }, 'Choose which categories Insights can analyze. Disabled categories won\'t appear in your insights.'),
+                    // Category toggles
                     React.createElement('div', {
-                        style: { display: 'flex', gap: '0px', alignItems: 'flex-start' }
+                        style: {
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '0px'
+                        }
                     },
-                        React.createElement('div', {
-                            style: { width: '28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '1px' }
-                        },
-                            React.createElement('i', {
-                                className: 'ph-fill ph-eye',
-                                style: { fontSize: '14px', color: '#007aff' }
-                            })
-                        ),
-                        React.createElement('div', { style: { flex: 1 } },
+                        ...[
+                            { key: 'socialMedia', label: 'Social Media', icon: 'ph-chats-circle', iconColor: '#007aff', desc: 'Instagram, TikTok, Twitter' },
+                            { key: 'entertainment', label: 'Entertainment', icon: 'ph-play-circle', iconColor: '#ff9500', desc: 'YouTube, Netflix, Spotify' },
+                            { key: 'gaming', label: 'Gaming', icon: 'ph-game-controller', iconColor: '#af52de', desc: 'Chess, game apps' },
+                            { key: 'productivity', label: 'Productivity', icon: 'ph-briefcase', iconColor: '#34c759', desc: 'Mail, Calendar, Notes' },
+                            { key: 'health', label: 'Health & Fitness', icon: 'ph-heart', iconColor: '#ff2d55', desc: 'Health, workout apps' },
+                            { key: 'communication', label: 'Communication', icon: 'ph-chat-dots', iconColor: '#5856d6', desc: 'Messages, FaceTime, calls' }
+                        ].map((cat, idx) =>
                             React.createElement('div', {
-                                style: { fontSize: '13px', fontWeight: '400', color: '#1a1a1a', marginBottom: '3px', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
-                            }, 'On-Device AI'),
-                            React.createElement('div', {
-                                style: { fontSize: '12px', color: '#8e8e93', lineHeight: '1.5', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
-                            }, 'Insights are generated by an AI model that analyzes your patterns based on your phone activity locally on your device.')
+                                key: cat.key,
+                                style: {
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    padding: '10px 0',
+                                    borderBottom: idx < 5 ? '1px solid #f2f2f7' : 'none'
+                                }
+                            },
+                                React.createElement('div', {
+                                    style: {
+                                        width: '30px',
+                                        height: '30px',
+                                        borderRadius: '8px',
+                                        background: cat.iconColor + '15',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        flexShrink: 0
+                                    }
+                                },
+                                    React.createElement('i', {
+                                        className: 'ph-fill ' + cat.icon,
+                                        style: { fontSize: '15px', color: cat.iconColor }
+                                    })
+                                ),
+                                React.createElement('div', { style: { flex: 1, minWidth: 0 } },
+                                    React.createElement('div', {
+                                        style: { fontSize: '13px', fontWeight: '500', color: '#1a1a1a', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                                    }, cat.label),
+                                    React.createElement('div', {
+                                        style: { fontSize: '11px', color: '#8e8e93', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
+                                    }, cat.desc)
+                                ),
+                                // iOS-style toggle
+                                React.createElement('div', {
+                                    onClick: () => setCategoryToggles(prev => ({ ...prev, [cat.key]: !prev[cat.key] })),
+                                    style: {
+                                        width: '42px',
+                                        height: '26px',
+                                        borderRadius: '13px',
+                                        background: categoryToggles[cat.key] ? '#34c759' : '#e9e9eb',
+                                        position: 'relative',
+                                        cursor: 'pointer',
+                                        transition: 'background 0.2s',
+                                        flexShrink: 0
+                                    }
+                                },
+                                    React.createElement('div', {
+                                        style: {
+                                            width: '22px',
+                                            height: '22px',
+                                            borderRadius: '11px',
+                                            background: 'white',
+                                            position: 'absolute',
+                                            top: '2px',
+                                            left: categoryToggles[cat.key] ? '18px' : '2px',
+                                            transition: 'left 0.2s',
+                                            boxShadow: '0 1px 3px rgba(0,0,0,0.15)'
+                                        }
+                                    })
+                                )
+                            )
                         )
                     ),
-                    // Row 2 - Lock icon
-                    React.createElement('div', {
-                        style: { display: 'flex', gap: '0px', alignItems: 'flex-start' }
-                    },
-                        React.createElement('div', {
-                            style: { width: '28px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '1px' }
-                        },
-                            React.createElement('i', {
-                                className: 'ph-fill ph-lock',
-                                style: { fontSize: '14px', color: '#34c759' }
-                            })
-                        ),
-                        React.createElement('div', { style: { flex: 1 } },
-                            React.createElement('div', {
-                                style: { fontSize: '13px', fontWeight: '400', color: '#1a1a1a', marginBottom: '3px', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
-                            }, 'Private & Secure'),
-                            React.createElement('div', {
-                                style: { fontSize: '12px', color: '#8e8e93', lineHeight: '1.5', fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif' }
-                            }, 'Your data never leaves your phone. The AI model runs entirely on your device with no external servers involved.')
-                        )
-                    )
-                ),
-                React.createElement('button', {
-                    onClick: () => setShowInfoPopup(false),
-                    style: {
-                        width: '100%',
-                        padding: '10px',
-                        borderRadius: '10px',
-                        border: 'none',
-                        background: '#007aff',
-                        color: 'white',
-                        fontSize: '14px',
-                        fontWeight: '500',
-                        cursor: 'pointer',
-                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
-                    }
-                }, 'Got it')
+                    // Done button
+                    React.createElement('button', {
+                        onClick: () => setInfoPopupScreen('main'),
+                        style: {
+                            width: '100%',
+                            padding: '10px',
+                            borderRadius: '10px',
+                            border: 'none',
+                            background: '#007aff',
+                            color: 'white',
+                            fontSize: '14px',
+                            fontWeight: '500',
+                            cursor: 'pointer',
+                            fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                            marginTop: '16px'
+                        }
+                    }, 'Done')
+                )
             )
         ),
         // Text feedback popup overlay
