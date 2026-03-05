@@ -311,6 +311,91 @@ function App() {
                         null,
                         screenComponent
                     ),
+                    // Guide steps - positioned absolutely around the phone
+                    ...(currentScreen === 'home' && activeSolution === 'solution2' ? [
+                        { num: '1', text: 'Behavioral insight · Tap for breakdown', side: 'right', top: '50%' }
+                    ] : currentScreen === 'insights-detail' ? [
+                        { num: '1', text: 'Highlights the most unusual moment of the day', side: 'right', top: '17%' },
+                        { num: '2', text: 'Feedback: accurate or not?', side: 'right', top: '22%' },
+                        { num: '3', text: 'Highlights one positive moment of the day', side: 'right', top: '30%' },
+                        { num: '4', text: 'Shows pattern generated throughout the week', side: 'right', top: '55%' },
+                        { num: '5', text: 'Memoji of the week', side: 'right', top: '78%' },
+                        { num: '6', text: 'Privacy & tracking controls', side: 'right', top: '7%' }
+                    ] : []).map((step, i) =>
+                        React.createElement('div', {
+                            key: step.text,
+                            style: {
+                                position: 'absolute',
+                                top: step.top,
+                                [step.side === 'left' ? 'right' : 'left']: 'calc(100% - 15px)',
+                                display: 'flex',
+                                flexDirection: step.side === 'left' ? 'row-reverse' : 'row',
+                                alignItems: 'center',
+                                gap: '0px',
+                                zIndex: 5
+                            }
+                        },
+                            // Arrow line
+                            React.createElement('div', {
+                                style: {
+                                    width: '40px',
+                                    height: '1px',
+                                    background: '#c7c7cc',
+                                    flexShrink: 0
+                                }
+                            }),
+                            // Arrow head
+                            React.createElement('div', {
+                                style: {
+                                    width: 0,
+                                    height: 0,
+                                    borderTop: '4px solid transparent',
+                                    borderBottom: '4px solid transparent',
+                                    [step.side === 'left' ? 'borderLeft' : 'borderRight']: '6px solid #c7c7cc',
+                                    flexShrink: 0
+                                }
+                            }),
+                            // Step box
+                            React.createElement('div', {
+                                style: {
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '6px',
+                                    padding: '5px 10px',
+                                    borderRadius: '8px',
+                                    border: '1px solid #e5e5ea',
+                                    background: 'white',
+                                    whiteSpace: 'nowrap',
+                                    boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+                                    [step.side === 'left' ? 'marginRight' : 'marginLeft']: '4px'
+                                }
+                            },
+                                React.createElement('span', {
+                                    style: {
+                                        width: '16px',
+                                        height: '16px',
+                                        borderRadius: '50%',
+                                        background: '#007aff',
+                                        color: 'white',
+                                        fontSize: '9px',
+                                        fontWeight: '600',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        flexShrink: 0
+                                    }
+                                }, step.num),
+                                React.createElement('span', {
+                                    style: {
+                                        fontSize: '10px',
+                                        color: '#6e6e73',
+                                        fontWeight: '400',
+                                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
+                                    }
+                                }, step.text)
+                            )
+                        )
+                    )
                 )
             )
     );
