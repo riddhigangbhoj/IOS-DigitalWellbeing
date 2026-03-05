@@ -477,7 +477,7 @@ function WireframeScreen() {
                         style: { display: 'flex', alignItems: 'center', gap: '6px', flex: 1 }
                     },
                         label('▲', { bold: true, size: '11px' }),
-                        label('[Headline] due to [cause]', { size: '11px' })
+                        label('50% more phone checks due to 3h less sleep', { size: '11px' })
                     )
                 ),
                 // Feedback buttons
@@ -503,9 +503,9 @@ function WireframeScreen() {
                     style: { display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }
                 },
                     label('✓', { bold: true, size: '11px' }),
-                    label('[Success metric]', { bold: true, size: '11px' })
+                    label('2h phone-free stretch', { bold: true, size: '11px' })
                 ),
-                label('[Time range] · [Context]', { size: '10px', style: { display: 'block', color: '#555' } })
+                label('11 AM – 1 PM · Meetings + focus mode', { size: '10px', style: { display: 'block', color: '#555' } })
             )
         }),
 
@@ -516,17 +516,17 @@ function WireframeScreen() {
         box({
             mb: '10px', p: '12px',
             children: React.createElement(React.Fragment, null,
-                label('[Pattern name]', { bold: true, size: '12px', style: { display: 'block', marginBottom: '2px' } }),
+                label('Commute scrolling', { bold: true, size: '12px', style: { display: 'block', marginBottom: '2px' } }),
                 // Subtitle row
                 React.createElement('div', {
                     style: { display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '10px' }
                 },
-                    label('[icon]', { size: '10px' }),
-                    label('[Time range]', { size: '10px', style: { color: '#555' } }),
+                    label('🚆', { size: '10px' }),
+                    label('7–9 AM', { size: '10px', style: { color: '#555' } }),
                     label('·', { size: '9px', style: { color: '#999' } }),
-                    label('[X]/7 days', { size: '10px', style: { color: '#555' } })
+                    label('6/7 mornings', { size: '10px', style: { color: '#555' } })
                 ),
-                // Y-axis + bars
+                // Y-axis + stacked bars
                 React.createElement('div', {
                     style: { display: 'flex', height: '60px', marginBottom: '4px' }
                 },
@@ -539,19 +539,37 @@ function WireframeScreen() {
                         label('30m', { size: '8px', style: { textAlign: 'right', color: '#999' } }),
                         label('0', { size: '8px', style: { textAlign: 'right', color: '#999' } })
                     ),
-                    // Bars
+                    // Stacked bars
                     React.createElement('div', {
                         style: { flex: 1, display: 'flex', alignItems: 'flex-end', gap: '4px', borderLeft: '1px solid #ccc' }
                     },
-                        ...[80, 65, 75, 85, 70, 78, 0].map((v, i) =>
-                            React.createElement('div', {
+                        ...[
+                            { music: 50, social: 30 },
+                            { music: 25, social: 40 },
+                            { music: 35, social: 40 },
+                            { music: 55, social: 30 },
+                            { music: 20, social: 50 },
+                            { music: 40, social: 38 },
+                            { music: 0, social: 0 }
+                        ].map((entry, i) => {
+                            var musicH = Math.round((entry.music / 90) * 60);
+                            var socialH = Math.round((entry.social / 90) * 60);
+                            var total = entry.music + entry.social;
+                            return React.createElement('div', {
                                 key: i,
                                 style: {
-                                    flex: 1, height: v > 0 ? Math.round((v / 90) * 60) + 'px' : '0',
-                                    background: v > 0 ? '#000' : 'transparent', borderRadius: '2px 2px 0 0'
+                                    flex: 1, display: 'flex', flexDirection: 'column',
+                                    borderRadius: '2px 2px 0 0', overflow: 'hidden'
                                 }
-                            })
-                        )
+                            },
+                                React.createElement('div', {
+                                    style: { height: socialH + 'px', background: total > 0 ? '#888' : 'transparent' }
+                                }),
+                                React.createElement('div', {
+                                    style: { height: musicH + 'px', background: total > 0 ? '#000' : 'transparent' }
+                                })
+                            );
+                        })
                     )
                 ),
                 // Day labels
@@ -565,11 +583,24 @@ function WireframeScreen() {
                         }, d)
                     )
                 ),
+                // Legend
+                React.createElement('div', {
+                    style: { display: 'flex', gap: '10px', marginTop: '6px', marginLeft: '28px' }
+                },
+                    React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '4px' } },
+                        React.createElement('div', { style: { width: '8px', height: '8px', background: '#000', borderRadius: '1px' } }),
+                        label('Music', { size: '8px', style: { color: '#666' } })
+                    ),
+                    React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '4px' } },
+                        React.createElement('div', { style: { width: '8px', height: '8px', background: '#888', borderRadius: '1px' } }),
+                        label('Social Media', { size: '8px', style: { color: '#666' } })
+                    )
+                ),
                 // Why text
                 React.createElement('div', {
                     style: { marginTop: '10px', fontStyle: 'italic' }
                 },
-                    label('[Why explanation text]', { size: '10px', style: { color: '#555' } })
+                    label('During commute downtime, music and social media fill the gap', { size: '10px', style: { color: '#555' } })
                 )
             )
         }),
@@ -587,12 +618,12 @@ function WireframeScreen() {
                         borderBottom: '1px solid #ddd'
                     }
                 },
-                    label('[Memoji scene image]', { size: '11px', style: { color: '#888' } })
+                    label('[Commute memoji scene]', { size: '11px', style: { color: '#888' } })
                 ),
                 // Caption
                 React.createElement('div', { style: { padding: '8px 12px' } },
                     label('Memoji of the week', { bold: true, size: '11px', style: { display: 'block', marginBottom: '2px' } }),
-                    label('[Context] · [X] days this week', { size: '9px', style: { color: '#555' } })
+                    label('Morning commute · 6 days this week', { size: '9px', style: { color: '#555' } })
                 )
             )
         }),
