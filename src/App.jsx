@@ -62,8 +62,8 @@ function App() {
                         style: {
                             display: 'flex',
                             justifyContent: 'center',
-                            padding: '60px 20px 0px 20px',
-                            marginBottom: '-25px',
+                            padding: '40px 20px 0px 20px',
+                            marginBottom: '15px',
                             position: 'relative',
                             zIndex: 1000,
                             userSelect: 'none'
@@ -191,8 +191,8 @@ function App() {
                         style: {
                             display: 'flex',
                             justifyContent: 'center',
-                            padding: '60px 20px 0px 20px',
-                            marginBottom: '-25px',
+                            padding: '40px 20px 0px 20px',
+                            marginBottom: '15px',
                             position: 'relative',
                             zIndex: 1000,
                             userSelect: 'none'
@@ -311,102 +311,6 @@ function App() {
                         null,
                         screenComponent
                     ),
-                    // Guide steps - positioned absolutely around the phone
-                    ...(currentScreen === 'home' ? [
-                        // Step 1 - Read the insight (right, pointing to insight content)
-                        { num: '1', text: 'Read the insight', side: 'left', top: '59%' },
-                        // Step 2 - Swipe for next (right, pointing to pagination dots)
-                        { num: '2', text: 'Swipe for next', side: 'right', top: '68%' },
-                        // Step 3 - Tap View more (right, at View more height)
-                        { num: '3', text: 'Tap "View more"', side: 'right', top: '51%' }
-                    ] : currentScreen === 'insights-detail' && insightView === 'day' ? [
-                        // Step 1 - Tap to expand & give feedback (right, near expand arrow)
-                        { num: '1', text: 'Tap to expand & give feedback', side: 'right', top: '28%' },
-                        // Step 2 - Scroll for more (right, lower)
-                        { num: '2', text: 'Scroll for more', side: 'right', top: '50%' },
-                        // Step 3 - Try Week view (left, near toggle)
-                        { num: '3', text: 'Try Week view', side: 'left', top: '12%' }
-                    ] : currentScreen === 'insights-detail' && insightView === 'week' ? [
-                        { num: '1', text: 'Scroll to view more', side: 'left', top: '50%' },
-                        { num: '2', text: 'Scroll to view weekly mood stickers', side: 'right', top: '80%' },
-                        { num: '3', text: 'Tap ⓘ for privacy info', side: 'right', top: '12%' },
-                        { num: '4', text: 'Manage tracking', side: 'right', top: '60%' }
-                    ] : []).map((step, i) =>
-                        React.createElement('div', {
-                            key: step.text,
-                            style: {
-                                position: 'absolute',
-                                top: step.top,
-                                [step.side === 'left' ? 'right' : 'left']: step.side === 'left' ? 'calc(100% - 15px)' : 'calc(100% - 15px)',
-                                display: 'flex',
-                                flexDirection: step.side === 'left' ? 'row-reverse' : 'row',
-                                alignItems: 'center',
-                                gap: '0px',
-                                zIndex: 5
-                            }
-                        },
-                            // Arrow line extending into screen
-                            React.createElement('div', {
-                                style: {
-                                    width: '40px',
-                                    height: '1px',
-                                    background: '#c7c7cc',
-                                    flexShrink: 0
-                                }
-                            }),
-                            // Arrow head
-                            React.createElement('div', {
-                                style: {
-                                    width: 0,
-                                    height: 0,
-                                    borderTop: '4px solid transparent',
-                                    borderBottom: '4px solid transparent',
-                                    [step.side === 'left' ? 'borderRight' : 'borderLeft']: '0px',
-                                    [step.side === 'left' ? 'borderLeft' : 'borderRight']: '6px solid #c7c7cc',
-                                    flexShrink: 0
-                                }
-                            }),
-                            // Step box
-                            React.createElement('div', {
-                                style: {
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '6px',
-                                    padding: '5px 10px',
-                                    borderRadius: '8px',
-                                    border: '1px solid #e5e5ea',
-                                    background: 'white',
-                                    whiteSpace: 'nowrap',
-                                    boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
-                                    [step.side === 'left' ? 'marginRight' : 'marginLeft']: '4px'
-                                }
-                            },
-                                step.num ? React.createElement('span', {
-                                    style: {
-                                        width: '16px',
-                                        height: '16px',
-                                        borderRadius: '50%',
-                                        background: '#007aff',
-                                        color: 'white',
-                                        fontSize: '9px',
-                                        fontWeight: '600',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        flexShrink: 0
-                                    }
-                                }, step.num) : null,
-                                React.createElement('span', {
-                                    style: {
-                                        fontSize: '10px',
-                                        color: '#6e6e73',
-                                        fontWeight: '400',
-                                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
-                                    }
-                                }, step.text)
-                            )
-                        )
-                    )
                 )
             )
     );

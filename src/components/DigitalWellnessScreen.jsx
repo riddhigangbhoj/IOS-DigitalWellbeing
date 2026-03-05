@@ -342,275 +342,40 @@ function DigitalWellnessScreen({ onNavigate, isSolution }) {
 
         // Solution Block (only for solution2)
         isSolution ? React.createElement(React.Fragment, null,
-            React.createElement('div', {
-                style: {
-                    padding: '0 20px 7px 20px',
-                    fontSize: '13px',
-                    fontWeight: '400',
-                    color: '#6e6e73',
-                    textTransform: 'uppercase',
-                    letterSpacing: '-0.08px'
-                }
-            }, 'Insights'),
-
             React.createElement(
                 'div',
                 {
+                    onClick: () => onNavigate('insights-detail'),
                     style: {
                         margin: '0 16px 14px 16px',
                         background: 'white',
                         borderRadius: '11px',
-                        padding: '16px 16px',
-                        minHeight: '80px'
-                    }
-                },
-                // Swipeable slides container
-                React.createElement('div', {
-                    onTouchStart: handleTouchStart,
-                    onTouchMove: handleTouchMove,
-                    onTouchEnd: handleEnd,
-                    onMouseDown: handleMouseDown,
-                    onMouseMove: handleMouseMove,
-                    onMouseUp: handleEnd,
-                    onMouseLeave: handleEnd,
-                    style: {
-                        overflow: 'hidden',
-                        position: 'relative',
-                        width: '100%',
-                        marginBottom: '12px',
-                        cursor: isDragging ? 'grabbing' : 'grab',
-                        userSelect: 'none'
-                    }
-                },
-                    React.createElement('div', {
-                        style: {
-                            display: 'flex',
-                            transform: `translateX(-${currentSlide * 100}%)`,
-                            transition: 'transform 0.3s ease-out'
-                        }
-                    },
-                        // Slide 1
-                        React.createElement('div', {
-                            style: {
-                                width: '100%',
-                                minWidth: '100%',
-                                maxWidth: '100%',
-                                flexShrink: 0,
-                                overflow: 'hidden'
-                            }
-                        },
-                            React.createElement('div', {
-                                style: {
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'center',
-                                    marginBottom: '14px'
-                                }
-                            },
-                                React.createElement('div', {
-                                    style: {
-                                        fontSize: '14px',
-                                        color: '#1a1a1a',
-                                        fontWeight: '400'
-                                    }
-                                }, 'What happened today'),
-                                React.createElement('button', {
-                                    onClick: () => onNavigate('insights-detail'),
-                                    style: {
-                                        background: 'transparent',
-                                        border: 'none',
-                                        color: '#8e8e93',
-                                        fontSize: '11px',
-                                        fontWeight: '400',
-                                        cursor: 'pointer',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '2px',
-                                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
-                                    }
-                                },
-                                    'View more',
-                                    React.createElement('i', {
-                                        className: 'ph ph-caret-right',
-                                        style: {
-                                            fontSize: '10px'
-                                        }
-                                    })
-                                )
-                            ),
-                            React.createElement('div', {
-                                style: {
-                                    fontSize: '12px',
-                                    color: '#1a1a1a',
-                                    lineHeight: '1.5',
-                                    fontWeight: '400',
-                                    marginBottom: '10px',
-                                    padding: '10px 12px',
-                                    borderRadius: '8px',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: '5px',
-                                    overflow: 'hidden',
-                                    wordWrap: 'break-word',
-                                    paddingLeft: '12px',
-                                    borderLeft: '3px solid #d4a017',
-                                    borderRadius: '4px'
-                                }
-                            },
-                                React.createElement('div', {
-                                    style: {
-                                        fontWeight: '500',
-                                        color: '#1a1a1a',
-                                        fontSize: '13px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '6px'
-                                    }
-                                },
-                                    React.createElement('i', {
-                                        className: 'ph-fill ph-trend-up',
-                                        style: { fontSize: '14px', color: '#ff453a' }
-                                    }),
-                                    '50% more phone checks this afternoon'
-                                ),
-                                React.createElement('div', {
-                                    style: { display: 'flex' }
-                                },
-                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '55px', flexShrink: 0 } }, 'Cause:'),
-                                    React.createElement('span', { style: { color: '#6e6e73', flex: 1, minWidth: 0 } }, '3h less sleep than usual')
-                                ),
-                                React.createElement('div', {
-                                    style: { display: 'flex' }
-                                },
-                                    React.createElement('span', { style: { color: '#d4a017', minWidth: '55px', flexShrink: 0 } }, 'Why:'),
-                                    React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic', flex: 1, minWidth: 0 } }, 'Low energy → phone as easy dopamine hit')
-                                )
-                            ),
-                            renderHomeFeedbackButtons(1)
-                        ),
-                        // Slide 2 - What is different today
-                        React.createElement('div', {
-                            style: {
-                                width: '100%',
-                                minWidth: '100%',
-                                maxWidth: '100%',
-                                flexShrink: 0,
-                                overflow: 'hidden'
-                            }
-                        },
-                            React.createElement('div', {
-                                style: {
-                                    display: 'flex',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'center',
-                                    marginBottom: '14px'
-                                }
-                            },
-                                React.createElement('div', {
-                                    style: {
-                                        fontSize: '14px',
-                                        color: '#1a1a1a',
-                                        fontWeight: '400'
-                                    }
-                                }, 'What is different today'),
-                                React.createElement('button', {
-                                    onClick: () => onNavigate('insights-detail'),
-                                    style: {
-                                        background: 'transparent',
-                                        border: 'none',
-                                        color: '#8e8e93',
-                                        fontSize: '11px',
-                                        fontWeight: '400',
-                                        cursor: 'pointer',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '2px',
-                                        fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif'
-                                    }
-                                },
-                                    'View more',
-                                    React.createElement('i', {
-                                        className: 'ph ph-caret-right',
-                                        style: {
-                                            fontSize: '10px'
-                                        }
-                                    })
-                                )
-                            ),
-                            React.createElement('div', {
-                                style: {
-                                    fontSize: '12px',
-                                    color: '#1a1a1a',
-                                    lineHeight: '1.5',
-                                    fontWeight: '400',
-                                    marginBottom: '10px',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: '5px',
-                                    overflow: 'hidden',
-                                    wordWrap: 'break-word',
-                                    paddingLeft: '12px',
-                                    borderLeft: '3px solid #34c759',
-                                    borderRadius: '4px'
-                                }
-                            },
-                                React.createElement('div', {
-                                    style: {
-                                        fontWeight: '500',
-                                        color: '#1a1a1a',
-                                        fontSize: '13px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        gap: '6px'
-                                    }
-                                },
-                                    React.createElement('i', {
-                                        className: 'ph-fill ph-trend-down',
-                                        style: { fontSize: '14px', color: '#34c759' }
-                                    }),
-                                    '25% less screen time in the evening'
-                                ),
-                                React.createElement('div', {
-                                    style: { display: 'flex' }
-                                },
-                                    React.createElement('span', { style: { color: '#708238', minWidth: '55px', flexShrink: 0 } }, 'Cause:'),
-                                    React.createElement('span', { style: { color: '#6e6e73', flex: 1, minWidth: 0 } }, 'Gym day detected')
-                                ),
-                                React.createElement('div', {
-                                    style: { display: 'flex' }
-                                },
-                                    React.createElement('span', { style: { color: '#708238', minWidth: '55px', flexShrink: 0 } }, 'Why:'),
-                                    React.createElement('span', { style: { color: '#6e6e73', fontStyle: 'italic', flex: 1, minWidth: 0 } }, 'Exercise kills the restlessness that triggers scrolling')
-                                )
-                            ),
-                            renderHomeFeedbackButtons(2)
-                        )
-                    )
-                ),
-                // Pagination dots
-                React.createElement('div', {
-                    style: {
+                        padding: '12px 14px',
+                        cursor: 'pointer',
                         display: 'flex',
-                        justifyContent: 'center',
-                        gap: '6px'
+                        alignItems: 'center',
+                        gap: '12px'
                     }
                 },
-                    Array.from({ length: totalSlides }).map((_, i) =>
-                        React.createElement('div', {
-                            key: i,
-                            onClick: () => setCurrentSlide(i),
-                            style: {
-                                width: currentSlide === i ? '20px' : '6px',
-                                height: '6px',
-                                borderRadius: '3px',
-                                background: currentSlide === i ? '#1a1a1a' : '#d1d1d6',
-                                cursor: 'pointer',
-                                transition: 'all 0.3s ease'
-                            }
-                        })
-                    )
-                )
-            )
+                React.createElement('div', {
+                    style: {
+                        width: '44px', height: '44px', borderRadius: '10px',
+                        overflow: 'hidden', flexShrink: 0
+                    }
+                },
+                    React.createElement('img', {
+                        src: 'src/assets/mood-tired.jpg',
+                        style: { width: '100%', height: '100%', objectFit: 'cover', display: 'block' }
+                    })
+                ),
+                React.createElement('span', {
+                    style: { fontSize: '14px', color: '#1a1a1a', fontWeight: '400', flex: 1 }
+                }, 'Want to know why?'),
+React.createElement('i', {
+                    className: 'ph ph-caret-right',
+                    style: { fontSize: '14px', color: '#c7c7cc' }
+                })
+            ),
         ) : null,
 
         // Limit Usage
